@@ -5,8 +5,8 @@ const ACCELERATION = 1000.0
 const FRICTION = 800.0
 
 # ### ADDED: Knockback settings
-const KNOCKBACK_FORCE = 400.0
-const KNOCKBACK_DECAY = 2000.0 # How fast the knockback stops
+const KNOCKBACK_FORCE = 100.0
+const KNOCKBACK_DECAY = 1000.0 # How fast the knockback stops
 var knockback_vector = Vector2.ZERO
 
 @onready var animated_sprite = $AnimatedSprite2D

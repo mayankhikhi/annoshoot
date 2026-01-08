@@ -11,11 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://b27ta4rw5y56f" path="res://assets/ui/play,quit,options/tile002.png" id="4_jk1qb"]
 [ext_resource type="Texture2D" uid="uid://dfct0vdsxi3b5" path="res://assets/ui/play,quit,options/tile003.png" id="5_5dd4i"]
 [ext_resource type="FontFile" uid="uid://bs83n1pxixyi7" path="res://assets/fonts/Kenney Pixel Square.ttf" id="5_rcqid"]
-[ext_resource type="Texture2D" uid="uid://d51jghxp2wl3" path="res://assets/ui/play,quit,options/tile004.png" id="6_lgwnu"]
-[ext_resource type="Texture2D" uid="uid://c5ob08y07ab41" path="res://assets/ui/play,quit,options/tile005.png" id="7_flqon"]
 [ext_resource type="Texture2D" uid="uid://df0qlij8f3u72" path="res://assets/ui/clouds/cloud 5.png" id="14_a8gd2"]
+[ext_resource type="AudioStream" uid="uid://cyiffyhe0bph2" path="res://sounds/music/evil music.mp3" id="15_5pajh"]
 [ext_resource type="Texture2D" uid="uid://4l5ddwf8teg" path="res://assets/ui/clouds/cloud 3.png" id="15_hstxw"]
 [ext_resource type="Script" uid="uid://c7qkx1by51o7x" path="res://assets/fonts/ghost.gd" id="16_5pajh"]
+[ext_resource type="AudioStream" uid="uid://b2n3c1mohuu7j" path="res://sounds/cricket-on-a-summer-night-_-cricket-sound-341501.mp3" id="16_j7ex8"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_5pajh"]
 script = ExtResource("16_5pajh")
@@ -103,31 +103,6 @@ _data = {
 &"slide up": SubResource("Animation_tbmy8")
 }
 
-[sub_resource type="Animation" id="Animation_5pajh"]
-resource_name = "slide in"
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 2),
-"points": PackedFloat32Array(-156, -0.25, 0, 0.25, 0, 179, -0.6666666, 12.5, 0, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 2),
-"points": PackedFloat32Array(179, -0.25, 0, 0.25, 0, 179, -0.16666667, 0, 0, 0),
-"times": PackedFloat32Array(0, 1)
-}
-
 [sub_resource type="Animation" id="Animation_j7ex8"]
 length = 0.001
 tracks/0/type = "bezier"
@@ -151,6 +126,31 @@ tracks/1/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(179, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_5pajh"]
+resource_name = "slide in"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(-156, -0.25, 0, 0.25, 0, 179, -0.6666666, 12.5, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(179, -0.25, 0, 0.25, 0, 179, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
 }
 
 [sub_resource type="Animation" id="Animation_a8gd2"]
@@ -185,6 +185,31 @@ _data = {
 &"slide out": SubResource("Animation_a8gd2")
 }
 
+[sub_resource type="Animation" id="Animation_8egab"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(623, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-94, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
 [sub_resource type="Animation" id="Animation_hstxw"]
 resource_name = "slide in"
 length = 0.9
@@ -209,31 +234,6 @@ tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(-94, -0.25, 0, 0.25, 0, 127, -0.5, 28.5, 0, 0),
 "times": PackedFloat32Array(0, 0.9)
-}
-
-[sub_resource type="Animation" id="Animation_8egab"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(623, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-94, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="Animation" id="Animation_gw5y6"]
@@ -268,31 +268,6 @@ _data = {
 &"slide out": SubResource("Animation_gw5y6")
 }
 
-[sub_resource type="Animation" id="Animation_svtp6"]
-resource_name = "slide in"
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 2),
-"points": PackedFloat32Array(330, -0.25, 0, 0.25, 0, 330, -0.16666667, 0, 0, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 2),
-"points": PackedFloat32Array(-101, -0.25, 0, 0.25, 0, 62, -0.39999998, 14, 0, 0),
-"times": PackedFloat32Array(0, 1)
-}
-
 [sub_resource type="Animation" id="Animation_1dfpl"]
 length = 0.001
 tracks/0/type = "bezier"
@@ -316,6 +291,31 @@ tracks/1/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(-101, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_svtp6"]
+resource_name = "slide in"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(330, -0.25, 0, 0.25, 0, 330, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(-101, -0.25, 0, 0.25, 0, 62, -0.39999998, 14, 0, 0),
+"times": PackedFloat32Array(0, 1)
 }
 
 [sub_resource type="Animation" id="Animation_qywvv"]
@@ -350,6 +350,31 @@ _data = {
 &"slide out": SubResource("Animation_qywvv")
 }
 
+[sub_resource type="Animation" id="Animation_1acrt"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1210, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(194, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
 [sub_resource type="Animation" id="Animation_3wgol"]
 resource_name = "slide in"
 length = 1.1
@@ -374,31 +399,6 @@ tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 2),
 "points": PackedFloat32Array(194, -0.25, 0, 0.25, 0, 194, -0.18333334, 0, 0, 0),
 "times": PackedFloat32Array(0, 1.1)
-}
-
-[sub_resource type="Animation" id="Animation_1acrt"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1210, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(194, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="Animation" id="Animation_vr8o3"]
@@ -433,31 +433,6 @@ _data = {
 &"slide out": SubResource("Animation_vr8o3")
 }
 
-[sub_resource type="Animation" id="Animation_1a85y"]
-resource_name = "slide in"
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 2),
-"points": PackedFloat32Array(1298, -0.25, 0, 0.25, 0, 882, -0.6, -9, 0, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 2),
-"points": PackedFloat32Array(73, -0.25, 0, 0.25, 0, 73, -0.16666667, 0, 0, 0),
-"times": PackedFloat32Array(0, 1)
-}
-
 [sub_resource type="Animation" id="Animation_hl5e0"]
 length = 0.001
 tracks/0/type = "bezier"
@@ -481,6 +456,31 @@ tracks/1/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(73, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_1a85y"]
+resource_name = "slide in"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1298, -0.25, 0, 0.25, 0, 882, -0.6, -9, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(73, -0.25, 0, 0.25, 0, 73, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
 }
 
 [sub_resource type="Animation" id="Animation_engjn"]
@@ -535,9 +535,9 @@ offset_bottom = 40.0
 z_index = 2
 layout_mode = 0
 offset_left = 359.0
-offset_top = 37.0
+offset_top = 76.0
 offset_right = 749.0
-offset_bottom = 182.0
+offset_bottom = 221.0
 theme_override_colors/font_outline_color = Color(0.7176471, 0.46666667, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
 theme_override_fonts/normal_font = ExtResource("3_lgwnu")
@@ -560,9 +560,9 @@ custom_effects = [SubResource("RichTextEffect_5pajh")]
 [node name="Button" type="TextureButton" parent="Control"]
 layout_mode = 0
 offset_left = 410.0
-offset_top = 220.0
+offset_top = 288.0
 offset_right = 684.0
-offset_bottom = 317.0
+offset_bottom = 385.0
 action_mode = 0
 texture_normal = ExtResource("2_oa1go")
 texture_pressed = ExtResource("3_tbmy8")
@@ -572,22 +572,11 @@ stretch_mode = 0
 [node name="Button2" type="TextureButton" parent="Control"]
 layout_mode = 0
 offset_left = 411.0
-offset_top = 480.0
+offset_top = 428.0
 offset_right = 686.0
-offset_bottom = 577.0
+offset_bottom = 525.0
 texture_normal = ExtResource("4_jk1qb")
 texture_pressed = ExtResource("5_5dd4i")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="Button3" type="TextureButton" parent="Control"]
-layout_mode = 0
-offset_left = 411.0
-offset_top = 351.0
-offset_right = 685.0
-offset_bottom = 448.0
-texture_normal = ExtResource("6_lgwnu")
-texture_pressed = ExtResource("7_flqon")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -657,7 +646,14 @@ libraries = {
 }
 autoplay = "slide in"
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_5pajh")
+autoplay = true
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_j7ex8")
+autoplay = true
+
 [connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Control/Button2" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="Control/Button3" to="." method="_on_button_3_pressed"]
 [connection signal="timeout" from="background/00FinalProduct/Timer" to="." method="_on_timer_timeout"]

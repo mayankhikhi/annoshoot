@@ -1,33 +1,45 @@
 extends Control
 
+func _ready() -> void:
+	$".".hide()
+	$ColorRect/AnimationPlayer.play("RESET")
 
-var button = null
+func resume():
+	get_tree().paused = false
+	$".".hide()
+	$ColorRect/AnimationPlayer.play("fade out")
+
+func pause():
+	get_tree().paused = true
+	$".".show()
+	$ColorRect/AnimationPlayer.play("fade in")
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func testEsc():
+	if Input.is_action_pressed("pause") and get_tree().paused == false: 
+		pause()
+		
+	elif Input.is_action_pressed("pause") and get_tree().paused == true:
+		resume()
+		
+
 
 
 func _on_texture_button_pressed() -> void:
-	button = 'resume'
+	resume()
 	$AudioStreamPlayer2D.play()
-	$ColorRect/Timer.start()
-	$ColorRect/AnimationPlayer.play("fade out")
-	
+
+
 
 func _on_texture_button_2_pressed() -> void:
-	button = 'main menu'
+	resume()
+	get_tree().reload_current_scene()
 	$AudioStreamPlayer2D.play()
-	$ColorRect/Timer.start()
-	$ColorRect/AnimationPlayer.play("fade out")
 
 
 func _on_texture_button_3_pressed() -> void:
-	button = 'quit'
+	get_tree().quit()
 	$AudioStreamPlayer2D.play()
-	$ColorRect/Timer.start()
-	$ColorRect/AnimationPlayer.play("fade out")
-
-func _on_timer_timeout() -> void:
-	if button == 'resume':
-		get_tree().change_scene_to_file("res://scenes/game.tscn")
-	if button == 'main menu':
-		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
-	if button == 'quit':
-		get_tree().quit()
+	
+func _unhandled_input(event: InputEvent) -> void:
+	testEsc()

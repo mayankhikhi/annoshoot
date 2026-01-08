@@ -1,0 +1,94 @@
+[gd_scene load_steps=7 format=3 uid="uid://bxudsin2wsut3"]
+
+[ext_resource type="Texture2D" uid="uid://bkwgabprw48wx" path="res://assets/floor 1/floor 2/floor 2 preview.png" id="1_3bmlt"]
+[ext_resource type="Script" uid="uid://dw8s1me15jftb" path="res://scripts/level_2.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://b7p6qd15x513w" path="res://scenes/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://dxk7d6amss0sd" path="res://scenes/lift entry.tscn" id="3_lift"]
+[ext_resource type="PackedScene" uid="uid://buaaq0d1ac5o4" path="res://scenes/emeny.tscn" id="5_wo48x"]
+[ext_resource type="PackedScene" uid="uid://yy7gbxe6lsd5" path="res://scenes/human.tscn" id="6_y0kc7"]
+
+[node name="Level2" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TileMap"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TileMap/StaticBody2D"]
+scale = Vector2(0.99983656, 0.6657638)
+polygon = PackedVector2Array(325, 39, 326.05328, -108.14646, -312.051, -108.14646, -312, 39)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="TileMap/StaticBody2D"]
+scale = Vector2(1.0003064, 0.68497974)
+polygon = PackedVector2Array(-556, 39, -348, 38, -345.894, -105.112595, -555.8297, -105.112595)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="TileMap/StaticBody2D"]
+polygon = PackedVector2Array(-556, 20, -556, 322, 326, 322, 326, 206, 310, 206, 310, 306, -540, 306, -540, 19)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="TileMap/StaticBody2D"]
+polygon = PackedVector2Array(310, 144, 326, 144, 326, -48, 310, -48)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="TileMap/StaticBody2D"]
+polygon = PackedVector2Array(35, 38, 40, 68, 151, 68, 153, 40, 157, 21, 179, 21, 182, 57, 311, 57, 315, -19, 153, -21, 40, -17)
+
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="TileMap/StaticBody2D"]
+polygon = PackedVector2Array(-450, -73, -435, -73, -434, -234, -32, -235, -32, -312, -450, -312)
+
+[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="TileMap/StaticBody2D"]
+polygon = PackedVector2Array(-48, -72, -32, -72, -32, -281, -48, -281, -48, -185, -53, -188, -63, -188, -66, -184, -66, -172, -88, -172, -90, -168, -90, -111, -47, -111)
+
+[node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="TileMap/StaticBody2D"]
+polygon = PackedVector2Array(-154, -152, -139, -165, -121, -165, -109, -153, -109, -142, -121, -132, -140, -133, -151, -140)
+
+[node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="TileMap/StaticBody2D"]
+polygon = PackedVector2Array(-357, -214, -357, -235, -243, -235, -242, -177, -357, -177)
+
+[node name="CollisionPolygon2D11" type="CollisionPolygon2D" parent="TileMap/StaticBody2D"]
+polygon = PackedVector2Array(-422, -240, -422, -216, -428, -208, -423, -204, -407, -205, -404, -210, -411, -213, -411, -241)
+
+[node name="CollisionPolygon2D12" type="CollisionPolygon2D" parent="TileMap/StaticBody2D"]
+polygon = PackedVector2Array(-209, -243, -209, -228, -85, -229, -45, -230, -45, -245)
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="TileMap/StaticBody2D"]
+polygon = PackedVector2Array(84, -72, 100, -72, 100, -226, 516, -226, 516, 206, 323, 206, 323, 222, 532, 222, 532, -242, 84, -242)
+
+[node name="CollisionPolygon2D13" type="CollisionPolygon2D" parent="TileMap/StaticBody2D"]
+polygon = PackedVector2Array(84, -57, 338, -56, 338, 124, 326, 124, 320, 124, 320, 135, 354, 135, 354, -72, 84, -72)
+
+[node name="CollisionPolygon2D14" type="CollisionPolygon2D" parent="TileMap/StaticBody2D"]
+polygon = PackedVector2Array(-545, 154, -525, 154, -523, 167, -498, 168, -497, 227, -502, 233, -509, 234, -513, 251, -542, 251)
+
+[node name="CollisionPolygon2D15" type="CollisionPolygon2D" parent="TileMap/StaticBody2D"]
+polygon = PackedVector2Array(100, -164, 153, -131, 159, -131, 166, -132, 169, -105, 153, -105, 99, -140)
+
+[node name="CollisionPolygon2D16" type="CollisionPolygon2D" parent="TileMap/StaticBody2D"]
+polygon = PackedVector2Array(99, -222, 226, -174, 532, -175, 532, -242, 95, -243)
+
+[node name="Floor2Preview" type="Sprite2D" parent="TileMap"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_3bmlt")
+
+[node name="Player" parent="." instance=ExtResource("2_player")]
+z_index = 2
+position = Vector2(196, 171)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(3, 3)
+
+[node name="LiftEntry" parent="." instance=ExtResource("3_lift")]
+position = Vector2(-537, 47)
+
+[node name="enemy" parent="." instance=ExtResource("5_wo48x")]
+z_index = 2
+position = Vector2(-344, 105)
+rotation = -6.2831855
+collision_layer = 3
+collision_mask = 3
+
+[node name="human" parent="." instance=ExtResource("6_y0kc7")]
+z_index = 2
+position = Vector2(-380, 215)
+rotation = -6.2831855
+collision_layer = 3
+collision_mask = 3

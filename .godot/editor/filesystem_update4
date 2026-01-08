@@ -1,0 +1,4 @@
+res://scripts/emeny.gd
+res://scripts/spawner.gd
+res://scenes/game.tscn
+res://scripts/player.gd

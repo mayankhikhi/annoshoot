@@ -1,0 +1,136 @@
+[gd_scene load_steps=6 format=3 uid="uid://b3a87k1h7f20d"]
+
+[ext_resource type="Script" uid="uid://vwt3fsnkta3e" path="res://scripts/options.gd" id="1_c2u1v"]
+
+[sub_resource type="Animation" id="Animation_2iy26"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(271, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(701, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_kv8mn"]
+resource_name = "slide down"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 1, 0),
+"points": PackedFloat32Array(271, -0.25, 0, 0.25, 0, 271, 0, 0, 0, 0, 271, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.07549747, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 1, 0),
+"points": PackedFloat32Array(91, -0.25, 0, 0, -38.5, 29.5, 0, 0, 0, 0, 651.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 1)
+}
+
+[sub_resource type="Animation" id="Animation_yjkok"]
+resource_name = "slide up"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 3),
+"points": PackedFloat32Array(271, -0.25, 0, 0.25, 0, 271, -0.24, 0, 0.24, 0, 271, -0.010000005, 0, 0.010000005, 0),
+"times": PackedFloat32Array(0, 0.93333334, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 3),
+"points": PackedFloat32Array(651, -0.25, 0, 0.25, 0, 87.5, -0.24, 154.5, 0.24, -154.5, 91, -0.010000005, -2, 0.010000005, 2),
+"times": PackedFloat32Array(0, 0.7, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1sggn"]
+_data = {
+&"RESET": SubResource("Animation_2iy26"),
+&"slide down": SubResource("Animation_kv8mn"),
+&"slide up": SubResource("Animation_yjkok")
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_c2u1v")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_right = 1198.0
+offset_bottom = 669.0
+color = Color(0, 0.039215688, 0.1764706, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Control/ColorRect"]
+layout_mode = 0
+offset_left = 271.0
+offset_top = 701.0
+offset_right = 921.0
+offset_bottom = 1198.0007
+color = Color(0.37256867, 0.34163126, 0.60600525, 1)
+
+[node name="Label" type="Label" parent="Control/ColorRect/ColorRect"]
+layout_mode = 0
+offset_left = 262.0
+offset_top = 48.0
+offset_right = 411.0
+offset_bottom = 103.0
+theme_override_font_sizes/font_size = 24
+text = "OPTIONS"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/ColorRect/ColorRect"]
+libraries = {
+&"": SubResource("AnimationLibrary_1sggn")
+}
+autoplay = "slide up"
+
+[node name="Button" type="Button" parent="Control/ColorRect/ColorRect"]
+layout_mode = 0
+offset_right = 69.0
+offset_bottom = 68.0
+theme_override_font_sizes/font_size = 36
+text = "X"
+
+[node name="Timer" type="Timer" parent="Control/ColorRect/ColorRect"]
+
+[connection signal="pressed" from="Control/ColorRect/ColorRect/Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="Control/ColorRect/ColorRect/Timer" to="." method="_on_timer_timeout"]

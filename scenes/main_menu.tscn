@@ -1,0 +1,663 @@
+[gd_scene load_steps=42 format=3 uid="uid://cuegcbxgq2qv"]
+
+[ext_resource type="Script" uid="uid://dktdrtyuk0jxm" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="Texture2D" uid="uid://ds8fm8pq7353t" path="res://assets/ui/clouds/cloud 2.png" id="2_5pajh"]
+[ext_resource type="Texture2D" uid="uid://wfwuecletsb1" path="res://assets/ui/play,quit,options/tile000.png" id="2_oa1go"]
+[ext_resource type="Texture2D" uid="uid://ymi87ovg6n7e" path="res://assets/ui/00-final-product.png" id="2_tbmy8"]
+[ext_resource type="Texture2D" uid="uid://denhe3njlqlll" path="res://assets/ui/clouds/cloud 1.png" id="3_j7ex8"]
+[ext_resource type="FontFile" uid="uid://c1nc6kv0lndbt" path="res://assets/fonts/Kenney High.ttf" id="3_lgwnu"]
+[ext_resource type="Texture2D" uid="uid://r3cgnvmcrk3n" path="res://assets/ui/play,quit,options/tile001.png" id="3_tbmy8"]
+[ext_resource type="FontFile" uid="uid://cfswnxvtjohbp" path="res://assets/fonts/Kenney Pixel.ttf" id="4_flqon"]
+[ext_resource type="Texture2D" uid="uid://b27ta4rw5y56f" path="res://assets/ui/play,quit,options/tile002.png" id="4_jk1qb"]
+[ext_resource type="Texture2D" uid="uid://dfct0vdsxi3b5" path="res://assets/ui/play,quit,options/tile003.png" id="5_5dd4i"]
+[ext_resource type="FontFile" uid="uid://bs83n1pxixyi7" path="res://assets/fonts/Kenney Pixel Square.ttf" id="5_rcqid"]
+[ext_resource type="Texture2D" uid="uid://d51jghxp2wl3" path="res://assets/ui/play,quit,options/tile004.png" id="6_lgwnu"]
+[ext_resource type="Texture2D" uid="uid://c5ob08y07ab41" path="res://assets/ui/play,quit,options/tile005.png" id="7_flqon"]
+[ext_resource type="Texture2D" uid="uid://df0qlij8f3u72" path="res://assets/ui/clouds/cloud 5.png" id="14_a8gd2"]
+[ext_resource type="Texture2D" uid="uid://4l5ddwf8teg" path="res://assets/ui/clouds/cloud 3.png" id="15_hstxw"]
+[ext_resource type="Script" uid="uid://c7qkx1by51o7x" path="res://assets/fonts/ghost.gd" id="16_5pajh"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_5pajh"]
+script = ExtResource("16_5pajh")
+metadata/_custom_type_script = "uid://c7qkx1by51o7x"
+
+[sub_resource type="Animation" id="Animation_jk1qb"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(965.00006, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(954, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_5dd4i"]
+resource_name = "slide down"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 2),
+"points": PackedFloat32Array(925, -0.25, 0, 0.25, 0, 925, -0.135, 0, 0, 0, 925, -0.031666666, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.2, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 2),
+"points": PackedFloat32Array(552, -0.25, 0, 0.25, 0, 525, -0.135, 4.5, 0, 0, 954, -0.031666666, -71.5, 0, 0),
+"times": PackedFloat32Array(0, 0.19999999, 1)
+}
+
+[sub_resource type="Animation" id="Animation_tbmy8"]
+resource_name = "slide up"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 2, 2),
+"points": PackedFloat32Array(925, 0, 0, 0.135, 6.666677, 925, -0.135, 0, 0, 0, 925, -0.031666666, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.81, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 2, 2),
+"points": PackedFloat32Array(954, 0, 0, 0.135, -71.50001, 525, -0.135, 71.50001, 0, 0, 552.00006, -0.031666666, -4.5000105, 0, 0),
+"times": PackedFloat32Array(0, 0.81, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5dd4i"]
+_data = {
+&"RESET": SubResource("Animation_jk1qb"),
+&"slide down": SubResource("Animation_5dd4i"),
+&"slide up": SubResource("Animation_tbmy8")
+}
+
+[sub_resource type="Animation" id="Animation_5pajh"]
+resource_name = "slide in"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(-156, -0.25, 0, 0.25, 0, 179, -0.6666666, 12.5, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(179, -0.25, 0, 0.25, 0, 179, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_j7ex8"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-156, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(179, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_a8gd2"]
+resource_name = "slide out"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(179, -0.25, 0, 0.56666666, 9, -156, -0.16666667, 55.833336, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(179, -0.25, 0, 0.25, 0, 179, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a8gd2"]
+_data = {
+&"RESET": SubResource("Animation_j7ex8"),
+&"slide in": SubResource("Animation_5pajh"),
+&"slide out": SubResource("Animation_a8gd2")
+}
+
+[sub_resource type="Animation" id="Animation_hstxw"]
+resource_name = "slide in"
+length = 0.9
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(623, -0.25, 0, 0.25, 0, 623, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.9)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-94, -0.25, 0, 0.25, 0, 127, -0.5, 28.5, 0, 0),
+"times": PackedFloat32Array(0, 0.9)
+}
+
+[sub_resource type="Animation" id="Animation_8egab"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(623, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-94, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_gw5y6"]
+resource_name = "slide out"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(623, -0.25, 0, 0.25, 0, 623, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(126, -0.25, 0, 0.6, 17, -77, -0.16666667, 34, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gw5y6"]
+_data = {
+&"RESET": SubResource("Animation_8egab"),
+&"slide in": SubResource("Animation_hstxw"),
+&"slide out": SubResource("Animation_gw5y6")
+}
+
+[sub_resource type="Animation" id="Animation_svtp6"]
+resource_name = "slide in"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(330, -0.25, 0, 0.25, 0, 330, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(-101, -0.25, 0, 0.25, 0, 62, -0.39999998, 14, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_1dfpl"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(330, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-101, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_qywvv"]
+resource_name = "slide out"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(330, -0.25, 0, 0.25, 0, 330, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(62, -0.25, 0, 0.56666666, 14, -80, -0.16666667, 23.666668, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qywvv"]
+_data = {
+&"RESET": SubResource("Animation_1dfpl"),
+&"slide in": SubResource("Animation_svtp6"),
+&"slide out": SubResource("Animation_qywvv")
+}
+
+[sub_resource type="Animation" id="Animation_3wgol"]
+resource_name = "slide in"
+length = 1.1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1210, -0.25, 0, 0.25, 0, 995, -0.43333334, -29.5, 0, 0),
+"times": PackedFloat32Array(0, 1.1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(194, -0.25, 0, 0.25, 0, 194, -0.18333334, 0, 0, 0),
+"times": PackedFloat32Array(0, 1.1)
+}
+
+[sub_resource type="Animation" id="Animation_1acrt"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1210, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(194, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_vr8o3"]
+resource_name = "slide out"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(995, -0.25, 0, 0.25, 0, 1365, -0.16666667, -61.666668, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(194, -0.25, 0, 0.25, 0, 194, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vr8o3"]
+_data = {
+&"RESET": SubResource("Animation_1acrt"),
+&"slide in": SubResource("Animation_3wgol"),
+&"slide out": SubResource("Animation_vr8o3")
+}
+
+[sub_resource type="Animation" id="Animation_1a85y"]
+resource_name = "slide in"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1298, -0.25, 0, 0.25, 0, 882, -0.6, -9, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(73, -0.25, 0, 0.25, 0, 73, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_hl5e0"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1298, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(73, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_engjn"]
+resource_name = "slide out"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(882, -0.25, 0, 0.25, 0, 1310, -0.16666667, -71.333336, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(73, -0.25, 0, 0.25, 0, 73, -0.16666667, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_engjn"]
+_data = {
+&"RESET": SubResource("Animation_hl5e0"),
+&"slide in": SubResource("Animation_1a85y"),
+&"slide out": SubResource("Animation_engjn")
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_l6cm7")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -137.0
+offset_top = -38.0
+offset_right = 1316.0
+offset_bottom = 774.0
+color = Color(0, 0.039215688, 0.1764706, 1)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+z_index = 2
+layout_mode = 0
+offset_left = 359.0
+offset_top = 37.0
+offset_right = 749.0
+offset_bottom = 182.0
+theme_override_colors/font_outline_color = Color(0.7176471, 0.46666667, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_fonts/normal_font = ExtResource("3_lgwnu")
+theme_override_fonts/bold_font = ExtResource("4_flqon")
+theme_override_fonts/bold_italics_font = ExtResource("5_rcqid")
+theme_override_fonts/italics_font = ExtResource("5_rcqid")
+theme_override_fonts/mono_font = ExtResource("5_rcqid")
+theme_override_font_sizes/normal_font_size = 80
+theme_override_font_sizes/bold_font_size = 36
+theme_override_font_sizes/bold_italics_font_size = 36
+theme_override_font_sizes/italics_font_size = 36
+theme_override_font_sizes/mono_font_size = 36
+bbcode_enabled = true
+text = "[color=FFC30B][outline_size=5][tornado freq=2]Game Name[/tornado]
+[ghost]bottom text"
+horizontal_alignment = 1
+vertical_alignment = 1
+custom_effects = [SubResource("RichTextEffect_5pajh")]
+
+[node name="Button" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 410.0
+offset_top = 220.0
+offset_right = 684.0
+offset_bottom = 317.0
+action_mode = 0
+texture_normal = ExtResource("2_oa1go")
+texture_pressed = ExtResource("3_tbmy8")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Button2" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 411.0
+offset_top = 480.0
+offset_right = 686.0
+offset_bottom = 577.0
+texture_normal = ExtResource("4_jk1qb")
+texture_pressed = ExtResource("5_5dd4i")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Button3" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 411.0
+offset_top = 351.0
+offset_right = 685.0
+offset_bottom = 448.0
+texture_normal = ExtResource("6_lgwnu")
+texture_pressed = ExtResource("7_flqon")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="background" type="Node" parent="."]
+
+[node name="00FinalProduct" type="Sprite2D" parent="background"]
+position = Vector2(965.00006, 954)
+scale = Vector2(1.9333333, 1.9333333)
+texture = ExtResource("2_tbmy8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="background/00FinalProduct"]
+libraries = {
+&"": SubResource("AnimationLibrary_5dd4i")
+}
+autoplay = "slide up"
+
+[node name="Timer" type="Timer" parent="background/00FinalProduct"]
+
+[node name="Cloud1" type="Sprite2D" parent="background"]
+position = Vector2(-156, 179)
+texture = ExtResource("3_j7ex8")
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="background/Cloud1"]
+libraries = {
+&"": SubResource("AnimationLibrary_a8gd2")
+}
+autoplay = "slide in"
+
+[node name="Cloud2" type="Sprite2D" parent="background"]
+position = Vector2(623, -94)
+texture = ExtResource("2_5pajh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="background/Cloud2"]
+libraries = {
+&"": SubResource("AnimationLibrary_gw5y6")
+}
+autoplay = "slide in"
+
+[node name="Cloud3" type="Sprite2D" parent="background"]
+position = Vector2(330, -101)
+texture = ExtResource("2_5pajh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="background/Cloud3"]
+libraries = {
+&"": SubResource("AnimationLibrary_qywvv")
+}
+autoplay = "slide in"
+
+[node name="Cloud4" type="Sprite2D" parent="background"]
+position = Vector2(1210, 194)
+texture = ExtResource("15_hstxw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="background/Cloud4"]
+libraries = {
+&"": SubResource("AnimationLibrary_vr8o3")
+}
+autoplay = "slide in"
+
+[node name="Cloud5" type="Sprite2D" parent="background"]
+position = Vector2(1298, 73)
+texture = ExtResource("14_a8gd2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="background/Cloud5"]
+libraries = {
+&"": SubResource("AnimationLibrary_engjn")
+}
+autoplay = "slide in"
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Control/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="timeout" from="background/00FinalProduct/Timer" to="." method="_on_timer_timeout"]

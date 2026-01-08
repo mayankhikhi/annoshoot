@@ -1,9 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://dvnici10n7nxr"]
+[gd_scene load_steps=17 format=3 uid="uid://dvnici10n7nxr"]
 
+[ext_resource type="Texture2D" uid="uid://2p5m772nrmck" path="res://assets/floor 1/floor 1 only floorring.png" id="1_iywne"]
+[ext_resource type="Texture2D" uid="uid://cdhuoopap06ls" path="res://assets/floor 1/floor 1 items only.png" id="2_p57ef"]
 [ext_resource type="PackedScene" uid="uid://b7p6qd15x513w" path="res://scenes/player.tscn" id="3_lnu2h"]
-[ext_resource type="Texture2D" uid="uid://ccaprx5572bgv" path="res://assets/floor 1/floor 1 preview.png" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://buaaq0d1ac5o4" path="res://scenes/emeny.tscn" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://yy7gbxe6lsd5" path="res://scenes/human.tscn" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://dxk7d6amss0sd" path="res://scenes/lift entry.tscn" id="6_p57ef"]
-[ext_resource type="Script" uid="uid://shbneg0flfnx" path="res://scripts/spawner.gd" id="7_spawner"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iywne"]
 size = Vector2(130, 51)
@@ -41,12 +43,23 @@ size = Vector2(26, 22)
 position = Vector2(1, -1)
 rotation = -1.4575139
 
+[node name="Floor1OnlyFloorring" type="Sprite2D" parent="."]
+rotation = 1.4573499
+scale = Vector2(2, 2)
+texture = ExtResource("1_iywne")
+
 [node name="TileMap" type="Node" parent="."]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="TileMap"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TileMap/StaticBody2D"]
 polygon = PackedVector2Array(-424, -76, 442, -76, 442, -166, -440, -166, -440, -76)
+
+[node name="Floor1ItemsOnly" type="Sprite2D" parent="TileMap/StaticBody2D"]
+position = Vector2(1, -1)
+rotation = -0.00016403943
+scale = Vector2(2, 2)
+texture = ExtResource("2_p57ef")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/StaticBody2D"]
 position = Vector2(-197, -76.5)
@@ -101,113 +114,20 @@ position = Vector2(47.436665, -60.751648)
 rotation = -1.6842428
 zoom = Vector2(3, 3)
 
+[node name="enemy" parent="." instance=ExtResource("4_lbhrr")]
+z_index = 2
+position = Vector2(0.16640282, 63.387474)
+rotation = 1.4717076
+collision_layer = 3
+collision_mask = 3
+
+[node name="human" parent="." instance=ExtResource("5_iywne")]
+z_index = 2
+position = Vector2(-34.079468, -25.309887)
+rotation = 1.5431443
+collision_layer = 3
+collision_mask = 3
+
 [node name="LiftEntry" parent="." instance=ExtResource("6_p57ef")]
 position = Vector2(34.42589, -431.65823)
 rotation = 1.4573499
-
-[node name="Spawner" type="Node" parent="."]
-script = ExtResource("7_spawner")
-
-[node name="SpawnPoint1" type="Marker2D" parent="Spawner"]
-light_mask = 3
-visibility_layer = 3
-position = Vector2(-348, -37)
-
-[node name="SpawnPoint2" type="Marker2D" parent="Spawner"]
-light_mask = 3
-visibility_layer = 3
-position = Vector2(-345, 66)
-
-[node name="SpawnPoint3" type="Marker2D" parent="Spawner"]
-light_mask = 3
-visibility_layer = 3
-position = Vector2(-210, 40)
-
-[node name="SpawnPoint4" type="Marker2D" parent="Spawner"]
-light_mask = 3
-visibility_layer = 3
-position = Vector2(-229, 110)
-
-[node name="SpawnPoint5" type="Marker2D" parent="Spawner"]
-light_mask = 3
-visibility_layer = 3
-position = Vector2(87, 2)
-
-[node name="SpawnPoint6" type="Marker2D" parent="Spawner"]
-light_mask = 3
-visibility_layer = 3
-position = Vector2(86, 92)
-
-[node name="SpawnPoint7" type="Marker2D" parent="Spawner"]
-light_mask = 3
-visibility_layer = 3
-position = Vector2(266, -36)
-
-[node name="SpawnPoint8" type="Marker2D" parent="Spawner"]
-light_mask = 3
-visibility_layer = 3
-position = Vector2(260, 100)
-
-[node name="Floor1Preview" type="Sprite2D" parent="."]
-rotation = 1.4573499
-scale = Vector2(2, 2)
-texture = ExtResource("4_lbhrr")
-
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="ShopButton" type="Button" parent="UI"]
-offset_left = 20.0
-offset_top = 110.0
-offset_right = 100.0
-offset_bottom = 150.0
-text = "SHOP"
-
-[node name="ShopPanel" type="ColorRect" parent="UI"]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -150.0
-offset_right = 200.0
-offset_bottom = 150.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.1, 0.1, 0.1, 0.9)
-
-[node name="Title" type="Label" parent="UI/ShopPanel"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 20.0
-offset_bottom = 60.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 28
-text = "DARK MARKET"
-horizontal_alignment = 1
-
-[node name="BuyMagButton" type="Button" parent="UI/ShopPanel"]
-layout_mode = 0
-offset_left = 50.0
-offset_top = 80.0
-offset_right = 350.0
-offset_bottom = 130.0
-text = "Buy Magazine (5 Coins)"
-
-[node name="BuyBloodButton" type="Button" parent="UI/ShopPanel"]
-layout_mode = 0
-offset_left = 50.0
-offset_top = 150.0
-offset_right = 350.0
-offset_bottom = 200.0
-text = "Buy Demon Blood (5 Coins)"
-
-[node name="CloseButton" type="Button" parent="UI/ShopPanel"]
-layout_mode = 0
-offset_left = 150.0
-offset_top = 240.0
-offset_right = 250.0
-offset_bottom = 280.0
-text = "CLOSE"

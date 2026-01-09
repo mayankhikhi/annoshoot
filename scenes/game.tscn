@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b7p6qd15x513w" path="res://scenes/player.tscn" id="3_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://ccaprx5572bgv" path="res://assets/floor 1/floor 1 preview.png" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://dxk7d6amss0sd" path="res://scenes/lift entry.tscn" id="6_p57ef"]
+[ext_resource type="PackedScene" uid="uid://ui_hud_scene_custom_id" path="res://scenes/ui_hud.tscn" id="ui_hud_scene"]
 [ext_resource type="Script" uid="uid://shbneg0flfnx" path="res://scripts/spawner.gd" id="7_spawner"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iywne"]
@@ -154,64 +155,7 @@ rotation = 1.4573499
 scale = Vector2(2, 2)
 texture = ExtResource("4_lbhrr")
 
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="ShopButton" type="Button" parent="UI"]
-offset_left = 20.0
-offset_top = 110.0
-offset_right = 100.0
-offset_bottom = 150.0
-text = "SHOP"
-
-[node name="ShopPanel" type="ColorRect" parent="UI"]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -150.0
-offset_right = 200.0
-offset_bottom = 150.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.1, 0.1, 0.1, 0.9)
-
-[node name="Title" type="Label" parent="UI/ShopPanel"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 20.0
-offset_bottom = 60.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 28
-text = "DARK MARKET"
-horizontal_alignment = 1
-
-[node name="BuyMagButton" type="Button" parent="UI/ShopPanel"]
-layout_mode = 0
-offset_left = 50.0
-offset_top = 80.0
-offset_right = 350.0
-offset_bottom = 130.0
-text = "Buy Magazine (5 Coins)"
-
-[node name="BuyBloodButton" type="Button" parent="UI/ShopPanel"]
-layout_mode = 0
-offset_left = 50.0
-offset_top = 150.0
-offset_right = 350.0
-offset_bottom = 200.0
-text = "Buy Demon Blood (5 Coins)"
-
-[node name="CloseButton" type="Button" parent="UI/ShopPanel"]
-layout_mode = 0
-offset_left = 150.0
-offset_top = 240.0
-offset_right = 250.0
-offset_bottom = 280.0
-text = "CLOSE"
+[node name="UI" parent="." instance=ExtResource("ui_hud_scene")]
 
 [node name="pause_menu" parent="." instance=ExtResource("2_iywne")]
 process_mode = 3

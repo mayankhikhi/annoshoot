@@ -8,6 +8,7 @@ const FRICTION = 800.0
 const KNOCKBACK_FORCE = 100.0
 const KNOCKBACK_DECAY = 1000.0 # How fast the knockback stops
 var knockback_vector = Vector2.ZERO
+const ZONE_RADIUS = 300.0 # Radius for demon circle detection
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var zone_area = $Area2D
@@ -17,6 +18,7 @@ var knockback_vector = Vector2.ZERO
 var coin_label: Label
 var ammo_label: Label
 var enemy_label: Label
+var demon_label: Label # Added for demon circle counter
 var lift_label: Label # Added for lift message
 var kill_all_label: Label # Added for kill all message
 var go_to_lift_label: Label # Added for go to lift message
@@ -53,7 +55,7 @@ var blood_button: Button
 var zone_duration = 3.0
 var zone_timer = 0.0
 var demon_circle_uses = 3
-var max_demon_circle_uses = 3
+var max_demon_circle_uses = 5 # Increased max to 5
 var game_started_safe = false
 
 # Audio
@@ -91,10 +93,21 @@ func _ready():
 	setup_shop_ui() # Initialize Shop UI
 	setup_audio()
 	setup_lift() # Setup lift logic
-	Global.zombies_remaining = 0
+	# Global.zombies_remaining = 0 # REMOVED: Managed by Spawner now
 	
+	# Load Persistent Stats
+	magazines = Global.magazines
+	current_ammo = Global.current_ammo
+	demon_circle_uses = Global.demon_circle_uses
+	current_health = Global.current_health
+	# max_health = Global.max_health # Optional if max health changes
+	
+	if health_bar:
+		health_bar.value = current_health
+
 	# Start fade in
 	fade_in_scene()
+	update_ui() # Ensure UI reflects loaded stats immediately
 	
 	await get_tree().create_timer(0.5).timeout
 	game_started_safe = true
@@ -147,6 +160,12 @@ func setup_coin_ui():
 	enemy_label.modulate = Color(1, 0, 0)
 	canvas_layer.add_child(enemy_label)
 	
+	demon_label = Label.new()
+	demon_label.position = Vector2(20, 110) # "Arranged" below Enemy
+	demon_label.add_theme_font_size_override("font_size", 24)
+	demon_label.modulate = Color(1, 0, 0) # Red color
+	canvas_layer.add_child(demon_label)
+	
 	lift_label = Label.new()
 	lift_label.text = "Press F to enter lift"
 	lift_label.position = Vector2(400, 300) # Center-ish? Better logic needed but fixed for now
@@ -166,7 +185,10 @@ func setup_coin_ui():
 	canvas_layer.add_child(kill_all_label)
 	
 	go_to_lift_label = Label.new()
-	go_to_lift_label.text = "GO TO THE LIFT!"
+	if get_tree().current_scene.name == "Level2":
+		go_to_lift_label.text = "GO TO THE STAIRS!"
+	else:
+		go_to_lift_label.text = "GO TO THE LIFT!"
 	go_to_lift_label.position = Vector2(300, 20)
 	go_to_lift_label.add_theme_font_size_override("font_size", 24)
 	go_to_lift_label.modulate = Color(1, 1, 0) # Yellow
@@ -203,6 +225,10 @@ func setup_shop_ui():
 	if not shop_button.pressed.is_connected(_on_shop_button_pressed):
 		shop_button.pressed.connect(_on_shop_button_pressed)
 	
+	# Fix Shop Button Position (Below text stats)
+	if shop_button:
+		shop_button.position = Vector2(20, 150)
+	
 	# Find Panel Buttons
 	mag_button = shop_panel.get_node_or_null("BuyMagButton")
 	blood_button = shop_panel.get_node_or_null("BuyBloodButton")
@@ -216,6 +242,28 @@ func setup_shop_ui():
 		
 	if close_btn and not close_btn.pressed.is_connected(_on_shop_button_pressed):
 		close_btn.pressed.connect(_on_shop_button_pressed)
+		
+	# Add Health Pack Button Programmatically
+	var health_button = Button.new()
+	health_button.text = "Health Pack (20)"
+	shop_panel.add_child(health_button)
+	health_button.pressed.connect(_on_buy_health_pressed)
+	
+	# Style matches Blood Button if possible
+	if blood_button:
+		health_button.size = blood_button.size
+		health_button.position = Vector2(blood_button.position.x, blood_button.position.y + blood_button.size.y + 10)
+	else:
+		health_button.position = Vector2(20, 200) # Fallback
+	
+	# Reposition Close Button to be below Health Button
+	if close_btn:
+		close_btn.position = Vector2(health_button.position.x, health_button.position.y + health_button.size.y + 10)
+		
+		# Resize Panel to fit content
+		var required_height = close_btn.position.y + close_btn.size.y + 30
+		if shop_panel.size.y < required_height:
+			shop_panel.size.y = required_height
 
 
 func _on_shop_button_pressed():
@@ -236,6 +284,7 @@ func _on_buy_mag_pressed():
 	if Global.coins >= 5:
 		Global.coins -= 5
 		magazines += 1
+		Global.magazines = magazines # Sync
 		update_ui()
 		# Optional: Play sound
 	else:
@@ -246,9 +295,25 @@ func _on_buy_blood_pressed():
 		if demon_circle_uses < max_demon_circle_uses:
 			Global.coins -= 5
 			demon_circle_uses += 1
+			Global.demon_circle_uses = demon_circle_uses # Sync
 			update_ui()
 		else:
 			print("Demon Circle full!")
+	else:
+		print("Not enough coins!")
+
+func _on_buy_health_pressed():
+	if Global.coins >= 20:
+		if current_health < max_health:
+			Global.coins -= 20
+			var heal_amount = max_health * 0.5
+			current_health = min(current_health + heal_amount, max_health)
+			Global.current_health = current_health # Sync
+			if health_bar: health_bar.value = current_health
+			print("Player: Healed! Health: ", current_health)
+			update_ui()
+		else:
+			print("Health already full!")
 	else:
 		print("Not enough coins!")
 
@@ -272,6 +337,8 @@ func update_ui():
 		ammo_label.text = "Ammo: " + str(current_ammo) + "/" + str(max_ammo) + " | Mags: " + str(magazines)
 	if enemy_label:
 		enemy_label.text = "Enemies Left: " + str(Global.zombies_remaining)
+	if demon_label:
+		demon_label.text = "Demon Circles: " + str(demon_circle_uses) + "/" + str(max_demon_circle_uses)
 		
 	if game_started_safe and Global.zombies_remaining <= 0:
 		if go_to_lift_label:
@@ -284,6 +351,12 @@ func show_win_screen():
 	if Global.zombies_remaining > 0: return
 	Global.game_over_message = "YOU WIN!\nALL ZOMBIES ELIMINATED"
 	transition_to_scene("res://scenes/end_secene.tscn")
+
+func handle_debug_input():
+	if Input.is_key_pressed(KEY_G):
+		print("DEBUG: Kill All Zombies triggered!")
+		get_tree().call_group("enemy", "die")
+
 
 func setup_audio():
 	shoot_sound_player = AudioStreamPlayer.new()
@@ -403,6 +476,7 @@ func _physics_process(delta: float) -> void:
 	handle_zone_toggle()
 	handle_shooting()
 	handle_reloading()
+	handle_debug_input() # Debug Cheat
 	# handle_lift_interaction() # Removed explicit F press check
 	
 	if zone_active:
@@ -443,12 +517,17 @@ func handle_reloading():
 			print("Player: Out of magazines!")
 
 func reload():
+	if magazines <= 0:
+		print("Player: Cannot reload - Out of magazines!")
+		return
 	is_reloading = true
 	if reload_sound_player:
 		reload_sound_player.play()
 	await get_tree().create_timer(reload_time).timeout
 	current_ammo = max_ammo
 	magazines -= 1
+	Global.current_ammo = current_ammo # Sync
+	Global.magazines = magazines # Sync
 	update_ui()
 	is_reloading = false
 
@@ -489,6 +568,7 @@ func handle_zone_toggle():
 					zone_active = false
 					return
 				demon_circle_uses -= 1
+				Global.demon_circle_uses = demon_circle_uses # Sync
 				zone_timer = 0.0
 				zone_area.monitoring = zone_active
 				zone_area.monitorable = zone_active
@@ -506,9 +586,19 @@ func handle_zone_toggle():
 func handle_shooting():
 	if Input.is_action_just_pressed("shoot") and weapon_equipped:
 		if is_reloading: return
+		
+		# Prevent shooting if shop is open
+		if shop_open: return
+		
+		# Prevent shooting if clicking shop button
+		if shop_button and shop_button.is_visible_in_tree():
+			if shop_button.get_global_rect().has_point(get_global_mouse_position()):
+				return
+		
 		if current_ammo > 0:
 			shoot()
 			current_ammo -= 1
+			Global.current_ammo = current_ammo # Sync
 		else:
 			reload()
 
@@ -530,6 +620,13 @@ func shoot():
 	
 	if shoot_sound_player:
 		shoot_sound_player.play()
+		
+	# Muzzle Flash
+	var muzzle = load("res://scenes/muzzle_particles.tscn").instantiate()
+	muzzle.position = direction * 20.0 # Offset slightly in shooting direction
+	muzzle.rotation = direction.angle()
+	add_child(muzzle)
+	muzzle.emitting = true
 	
 	await get_tree().create_timer(0.3).timeout
 	is_aiming = false
@@ -539,6 +636,11 @@ func _check_zone_bodies():
 	var bodies_in_zone = zone_area.get_overlapping_bodies()
 	for body in bodies_in_zone:
 		if body == self: continue
+		
+		# VISUAL CHECK: Only transform if actually close enough (circle radius)
+		if global_position.distance_to(body.global_position) > ZONE_RADIUS:
+			continue
+			
 		if body.has_method("transform_to_zombie"):
 			body.transform_to_zombie(self)
 			if body not in transformed_enemies:
@@ -546,6 +648,11 @@ func _check_zone_bodies():
 
 func _on_zone_body_entered(body):
 	if body == self: return
+	
+	# VISUAL CHECK: Only transform if actually close enough
+	if global_position.distance_to(body.global_position) > ZONE_RADIUS:
+		return
+		
 	if zone_active and body.has_method("transform_to_zombie"):
 		body.transform_to_zombie(self)
 		if body not in transformed_enemies:
@@ -613,7 +720,7 @@ func check_enemy_collisions():
 				var knockback_dir = (global_position - collider.global_position).normalized()
 				knockback_vector = knockback_dir * KNOCKBACK_FORCE
 				
-				take_damage(10)
+				take_damage(5) # Reduced damage from 10 to 5
 				break # Only take damage once per frame
 
 func take_damage(damage: float):
@@ -621,10 +728,18 @@ func take_damage(damage: float):
 		return
 	
 	current_health -= damage
+	Global.current_health = current_health # Sync
 	print("Player Health: ", current_health, "/", max_health)
 	
 	if health_bar:
 		health_bar.value = current_health
+		
+	# Spawn Red Blood
+	var blood = load("res://scenes/blood_particles.tscn").instantiate()
+	blood.color = Color(0.8, 0.0, 0.0)
+	get_tree().current_scene.add_child(blood)
+	blood.global_position = global_position
+	blood.emitting = true
 	
 	can_take_damage = false
 	await get_tree().create_timer(damage_cooldown).timeout

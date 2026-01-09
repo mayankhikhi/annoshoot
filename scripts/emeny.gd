@@ -22,6 +22,13 @@ var roam_timer = 0.0
 var roam_change_interval = 2.0  # Change direction every 2 seconds
 var is_part_of_wave = false # If true, this enemy counts towards a wave and shouldn't auto-increment global counter on spawn
 
+# Particle Settings
+@export var blood_color: Color = Color(0.0, 0.4, 0.0) # Dark Green
+@export var blood_amount: int = 16
+@export var blood_scale_min: float = 2.0
+@export var blood_scale_max: float = 4.0
+
+
 func _ready():
 	# Connect animation finished signal for transformation sequence
 	animated_sprite.animation_finished.connect(_on_animation_finished)
@@ -37,8 +44,8 @@ func _ready():
 	_change_roam_direction()
 	
 	add_to_group("enemy") # Ensure it's in the group for counting
-	if not is_part_of_wave:
-		Global.zombies_remaining += 1 # Register self if pre-placed
+	# if not is_part_of_wave:
+	# 	Global.zombies_remaining += 1 # Register self if pre-placed
 
 
 
@@ -168,6 +175,17 @@ func take_damage(damage: float):
 	current_health -= damage
 	print("Enemy: Took ", damage, " damage. Health: ", current_health, "/", max_health)
 	
+	# Spawn Dark Green Blood
+	var blood = load("res://scenes/blood_particles.tscn").instantiate()
+	blood.color = blood_color
+	blood.amount = blood_amount
+	blood.scale_amount_min = blood_scale_min
+	blood.scale_amount_max = blood_scale_max
+	blood.z_index = 5 # Ensure it appears on top
+	get_tree().current_scene.add_child(blood)
+	blood.global_position = global_position
+	blood.emitting = true
+	
 	# Update health bar
 	if health_bar:
 		health_bar.value = current_health
@@ -178,7 +196,7 @@ func take_damage(damage: float):
 
 func die():
 	print("Enemy: Died!")
-	Global.coins += 3
+	Global.coins += 5
 	Global.zombies_remaining -= 1
 	print("Global: Coins: ", Global.coins, " Zombies Left: ", Global.zombies_remaining)
 	queue_free()

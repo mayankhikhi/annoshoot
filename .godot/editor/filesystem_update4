@@ -1,4 +1,7 @@
-res://scripts/emeny.gd
-res://scripts/spawner.gd
-res://scenes/game.tscn
 res://scripts/player.gd
+res://scripts/emeny.gd
+res://scripts/Global.gd
+res://scripts/spawner.gd
+res://scenes/level_2.tscn
+res://scripts/human.gd
+res://scripts/win_trigger.gd

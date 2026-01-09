@@ -3,8 +3,8 @@ extends Node
 var zombie_scene = preload("res://scenes/emeny.tscn")
 var human_scene = preload("res://scenes/human.tscn")
 
-var max_zombies = 10
-var max_humans = 10
+@export var max_zombies = 10
+@export var max_humans = 10
 var current_zombies_spawned = 0
 var current_humans_spawned = 0
 
@@ -17,9 +17,18 @@ var player_node: Node2D
 
 func _ready():
 	randomize()
-	Global.zombies_remaining = 10 # Set the level goal
+	Global.zombies_remaining = max_zombies # Set the level goal dynamically
 	
-	player_node = get_parent().get_node_or_null("player")
+	# Try to find player by group first (best practice)
+	var players = get_tree().get_nodes_in_group("player")
+	if players.size() > 0:
+		player_node = players[0]
+	else:
+		# Fallback to naming convention
+		player_node = get_parent().get_node_or_null("player")
+		if not player_node:
+			player_node = get_parent().get_node_or_null("Player")
+	
 	if not player_node:
 		print("Spawner: Player not found!")
 		

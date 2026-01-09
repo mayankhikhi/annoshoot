@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://qridvohajd6p" path="res://assets/player movement/idle animation nogun.png" id="3_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://lgrgbs58v5wj" path="res://assets/player movement/idle animation withgun.png" id="4_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://dxpwx28xip7hb" path="res://assets/summoning circle animation sprite sheet.png" id="6_tuyoq"]
+[ext_resource type="Texture2D" uid="uid://dxpwx28xip7hb" path="res://assets/summoning circle animation sprite sheet.png" id="6_tuyoq"]
 [ext_resource type="PackedScene" uid="uid://crosshair" path="res://scenes/crosshair.tscn" id="7_fjrip"]
+[ext_resource type="AudioStream" uid="uid://cricket_sound" path="res://sounds/cricket-on-a-summer-night-_-cricket-sound-341501.mp3" id="8_crickets"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_um52d"]
 atlas = ExtResource("3_dqkch")
@@ -1847,3 +1849,9 @@ offset_bottom = -5.0
 rotation = 1.5707964
 fill_mode = 2
 show_percentage = false
+
+[node name="AmbientSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_crickets")
+volume_db = -15.0
+autoplay = true
+parameters/looping = true

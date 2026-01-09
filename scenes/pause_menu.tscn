@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://7k1u4hl4fk3c" path="res://scripts/pause_menu.gd" id="1_7l7mv"]
 [ext_resource type="FontFile" uid="uid://dr66hxrghfog" path="res://assets/fonts/Kenney Blocks.ttf" id="1_kukqi"]
 [ext_resource type="FontFile" uid="uid://cfswnxvtjohbp" path="res://assets/fonts/Kenney Pixel.ttf" id="2_5d2l8"]
-[ext_resource type="Texture2D" uid="uid://cb0f4nwr72r0l" path="res://assets/ui/UI_Flat_IconPlay01a.png" id="3_7l7mv"]
+[ext_resource type="Texture2D" uid="uid://cb0f4nwr72r0l" path="res://assets/ui/play,quit,options/tile000.png" id="3_7l7mv"]
 [ext_resource type="AudioStream" uid="uid://b763pb6pgcjn0" path="res://sounds/switch30.ogg" id="5_v4r4p"]
 
 [sub_resource type="Animation" id="Animation_1s2dm"]

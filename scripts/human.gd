@@ -21,6 +21,12 @@ var roam_change_interval = 2.0  # Change direction every 2 seconds
 var max_health = 50.0
 var current_health = 50.0
 
+# Particle Settings
+@export var blood_color: Color = Color(0.8, 0.0, 0.0) # Red
+@export var blood_amount: int = 16
+@export var blood_scale_min: float = 2.0
+@export var blood_scale_max: float = 4.0
+
 # Dialogue Options
 var dialogues = [
 	"Leave me alone!", 
@@ -132,6 +138,18 @@ func transform_to_zombie(player):
 func take_damage(damage: float):
 	current_health -= damage
 	print("Human: Took ", damage, " damage. Health: ", current_health, "/", max_health)
+	
+	# Spawn Red Blood
+	# Spawn Red Blood
+	var blood = load("res://scenes/blood_particles.tscn").instantiate()
+	blood.color = blood_color
+	blood.amount = blood_amount
+	blood.scale_amount_min = blood_scale_min
+	blood.scale_amount_max = blood_scale_max
+	blood.z_index = 5
+	get_tree().current_scene.add_child(blood)
+	blood.global_position = global_position
+	blood.emitting = true
 	
 	if health_bar:
 		health_bar.value = current_health

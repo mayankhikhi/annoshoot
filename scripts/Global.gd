@@ -4,6 +4,7 @@ var coins = 20
 var zombies_remaining = 0
 var game_over_message = "GAME OVER"
 
+
 var has_damage_upgrade = false
 
 # Persistent Player Stats

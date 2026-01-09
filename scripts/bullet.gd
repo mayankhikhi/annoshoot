@@ -13,7 +13,6 @@ func _ready():
 	$Timer.timeout.connect(_on_timer_timeout)
 
 @export var damage: float = 25.0
-
 func _setup_target():
 	start_position = global_position
 	target_distance = start_position.distance_to(target_position)

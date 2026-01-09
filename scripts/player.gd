@@ -34,7 +34,6 @@ var damage_cooldown = 1.0
 # Shooting Cooldown
 const SHOOT_COOLDOWN = 0.5
 var can_shoot = true
-
 var weapon_equipped = false
 var zone_active = false
 var transformed_enemies: Array = []
@@ -288,7 +287,6 @@ func setup_shop_ui():
 	# Reposition Close Button
 	if close_btn:
 		close_btn.position = Vector2(damage_button.position.x, damage_button.position.y + damage_button.size.y + 10)
-
 		
 		# Resize Panel to fit content
 		var required_height = close_btn.position.y + close_btn.size.y + 30
@@ -366,7 +364,6 @@ func _on_buy_damage_pressed():
 		print("Player: Bought Damage Upgrade!")
 	else:
 		print("Not enough coins!")
-
 func transition_to_scene(target_path: String):
 	if fade_overlay:
 		var tween = get_tree().create_tween()
@@ -704,7 +701,6 @@ func shoot():
 		bullet.damage = 25.0 * 2.0
 	else:
 		bullet.damage = 25.0
-	
 	get_tree().current_scene.add_child(bullet)
 	bullet.global_position = spawn_pos
 	bullet._setup_target()
@@ -712,7 +708,6 @@ func shoot():
 	can_shoot = false
 	await get_tree().create_timer(SHOOT_COOLDOWN).timeout
 	can_shoot = true
-	
 	if shoot_sound_player:
 		shoot_sound_player.play()
 		

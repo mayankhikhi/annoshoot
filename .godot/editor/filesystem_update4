@@ -1,8 +1,0 @@
-res://scripts/options.gd
-res://scripts/player.gd
-res://scripts/Global.gd
-res://scenes/main_menu.tscn
-res://scripts/bullet.gd
-res://scripts/emeny.gd
-res://scripts/end_scene.gd
-res://scripts/main_menu.gd

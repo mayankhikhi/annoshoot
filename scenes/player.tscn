@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dxpwx28xip7hb" path="res://assets/summoning circle animation sprite sheet.png" id="6_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://dxpwx28xip7hb" path="res://assets/summoning circle animation sprite sheet.png" id="6_tuyoq"]
 [ext_resource type="PackedScene" uid="uid://crosshair" path="res://scenes/crosshair.tscn" id="7_fjrip"]
-[ext_resource type="AudioStream" uid="uid://cricket_sound" path="res://sounds/cricket-on-a-summer-night-_-cricket-sound-341501.mp3" id="8_crickets"]
+[ext_resource type="AudioStream" path="res://sounds/cricket-on-a-summer-night-_-cricket-sound-341501.mp3" id="8_crickets"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_um52d"]
 atlas = ExtResource("3_dqkch")
@@ -1855,3 +1855,7 @@ stream = ExtResource("8_crickets")
 volume_db = -15.0
 autoplay = true
 parameters/looping = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+position_smoothing_enabled = false # Managed by script now

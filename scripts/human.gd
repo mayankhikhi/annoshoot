@@ -164,7 +164,7 @@ func die():
 	
 	Global.game_over_message = "GAME OVER\nYOU KILLED A CITIZEN"
 	get_tree().change_scene_to_file("res://scenes/end_secene.tscn")
-	queue_free()
+	call_deferred("queue_free")
 
 func play_movement_animation(direction: Vector2):
 	# 8-directional movement with better thresholds

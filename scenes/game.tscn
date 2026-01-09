@@ -98,10 +98,11 @@ z_index = 2
 position = Vector2(-60.394596, -79.683716)
 rotation = 1.4269423
 
-[node name="Camera2D" type="Camera2D" parent="player"]
-position = Vector2(6.11946, -3.8147469)
-rotation = -1.6842428
-zoom = Vector2(3, 3)
+[node name="player" parent="." groups=["player"] instance=ExtResource("3_lnu2h")]
+z_index = 2
+position = Vector2(-60.394596, -79.683716)
+rotation = 1.4269423
+
 
 [node name="LiftEntry" parent="." instance=ExtResource("6_p57ef")]
 position = Vector2(34.42589, -431.65823)

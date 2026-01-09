@@ -62,6 +62,12 @@ var game_started_safe = false
 var shoot_sound_player: AudioStreamPlayer
 var reload_sound_player: AudioStreamPlayer
 
+# Camera
+@onready var camera = $Camera2D
+var shake_intensity = 0.0
+var shake_decay = 5.0
+
+
 func _ready():
 	add_to_group("player")
 	
@@ -108,6 +114,11 @@ func _ready():
 	# Start fade in
 	fade_in_scene()
 	update_ui() # Ensure UI reflects loaded stats immediately
+	
+	if camera:
+		camera.top_level = true
+		camera.global_position = global_position
+
 	
 	await get_tree().create_timer(0.5).timeout
 	game_started_safe = true
@@ -485,6 +496,31 @@ func _physics_process(delta: float) -> void:
 			force_deactivate_zone()
 	
 	update_ui()
+	update_camera(delta)
+
+func update_camera(delta):
+	if not camera: return
+	
+	# Shake Decay
+	if shake_intensity > 0:
+		shake_intensity = lerp(shake_intensity, 0.0, shake_decay * delta)
+		
+	var shake_offset = Vector2(
+		randf_range(-shake_intensity, shake_intensity),
+		randf_range(-shake_intensity, shake_intensity)
+	)
+	
+	# Smooth Follow with Overshoot
+	var target_pos = global_position
+	if velocity.length() > 10:
+		target_pos += velocity * 0.3 # Look ahead
+	
+	# Custom Lerp for Rubber-banding effect
+	# We want a slightly springy feel, so specific lerp speed
+	camera.global_position = camera.global_position.lerp(target_pos, 5.0 * delta)
+	
+	# Apply Shake (additive, don't accumulate to position)
+	camera.offset = shake_offset
 	
 	# ### ADDED: Knockback Decay logic
 	# This reduces the knockback force over time so you don't slide forever
@@ -608,6 +644,11 @@ func shoot():
 	var mouse_pos = get_global_mouse_position()
 	var spawn_pos = global_position
 	var direction = (mouse_pos - spawn_pos).normalized()
+	
+	shake_intensity = 5.0 # Screen Shake
+	
+	bullet.global_position = spawn_pos
+	bullet.direction = direction
 	
 	is_aiming = true
 	play_aim_animation(direction)

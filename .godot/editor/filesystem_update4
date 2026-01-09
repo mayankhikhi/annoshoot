@@ -5,3 +5,5 @@ res://scripts/spawner.gd
 res://scenes/level_2.tscn
 res://scripts/human.gd
 res://scripts/win_trigger.gd
+res://scenes/player.tscn
+res://scripts/pause_menu.gd

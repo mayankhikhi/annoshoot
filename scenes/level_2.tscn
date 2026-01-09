@@ -76,9 +76,6 @@ texture = ExtResource("1_3bmlt")
 z_index = 2
 position = Vector2(-520, 86)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(3, 3)
-
 [node name="UI" parent="." instance=ExtResource("ui_hud_scene")]
 
 [node name="Spawner" type="Node" parent="."]

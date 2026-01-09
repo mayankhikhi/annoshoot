@@ -199,7 +199,7 @@ func die():
 	Global.coins += 5
 	Global.zombies_remaining -= 1
 	print("Global: Coins: ", Global.coins, " Zombies Left: ", Global.zombies_remaining)
-	queue_free()
+	call_deferred("queue_free")
 
 func play_movement_animation(direction: Vector2):
 	var prefix = "zombie_" if transformed else ""

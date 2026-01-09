@@ -41,5 +41,5 @@ func _on_texture_button_3_pressed() -> void:
 	get_tree().quit()
 	$AudioStreamPlayer2D.play()
 	
-func _unhandled_input(event: InputEvent) -> void:
+func _unhandled_input(_event: InputEvent) -> void:
 	testEsc()

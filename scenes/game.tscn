@@ -1,11 +1,10 @@
 [gd_scene load_steps=16 format=3 uid="uid://dvnici10n7nxr"]
 
-[ext_resource type="PackedScene" uid="uid://cw7aw6kyscnr3" path="res://scenes/pause_menu.tscn" id="2_iywne"]
 [ext_resource type="PackedScene" uid="uid://b7p6qd15x513w" path="res://scenes/player.tscn" id="3_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://ccaprx5572bgv" path="res://assets/floor 1/floor 1 preview.png" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://dxk7d6amss0sd" path="res://scenes/lift entry.tscn" id="6_p57ef"]
-[ext_resource type="PackedScene" uid="uid://ui_hud_scene_custom_id" path="res://scenes/ui_hud.tscn" id="ui_hud_scene"]
 [ext_resource type="Script" uid="uid://shbneg0flfnx" path="res://scripts/spawner.gd" id="7_spawner"]
+[ext_resource type="PackedScene" uid="uid://dwks2h4btukba" path="res://scenes/ui_hud.tscn" id="ui_hud_scene"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iywne"]
 size = Vector2(130, 51)
@@ -98,12 +97,6 @@ z_index = 2
 position = Vector2(-60.394596, -79.683716)
 rotation = 1.4269423
 
-[node name="player" parent="." groups=["player"] instance=ExtResource("3_lnu2h")]
-z_index = 2
-position = Vector2(-60.394596, -79.683716)
-rotation = 1.4269423
-
-
 [node name="LiftEntry" parent="." instance=ExtResource("6_p57ef")]
 position = Vector2(34.42589, -431.65823)
 rotation = 1.4573499
@@ -157,13 +150,3 @@ scale = Vector2(2, 2)
 texture = ExtResource("4_lbhrr")
 
 [node name="UI" parent="." instance=ExtResource("ui_hud_scene")]
-
-[node name="pause_menu" parent="." instance=ExtResource("2_iywne")]
-process_mode = 3
-visible = false
-offset_left = 29.485453
-offset_top = -276.8585
-offset_right = 29.485453
-offset_bottom = -276.8585
-rotation = 1.717404
-scale = Vector2(0.3, 0.3)

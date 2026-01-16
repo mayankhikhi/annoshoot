@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-const SPEED = 50.0
-const ZOMBIE_SPEED = 50.0  # Faster when chasing as zombie
+const SPEED = 100.0
+const ZOMBIE_SPEED = 100.0  # Faster when chasing as zombie
 const ACCELERATION = 1000.0
 const FRICTION = 800.0
 

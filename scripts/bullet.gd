@@ -8,12 +8,9 @@ var target_distance: float = 0.0
 var traveled_distance: float = 0.0
 var is_active: bool = false
 
-
-
 func _ready():
 	body_entered.connect(_on_body_entered)
 	$Timer.timeout.connect(_on_timer_timeout)
-	
 
 @export var damage: float = 25.0
 func _setup_target():
@@ -38,9 +35,6 @@ func _physics_process(delta: float) -> void:
 	else:
 		# Use global_position for world-space movement
 		global_position += direction * move_amount
-		
-
-	
 
 func _on_body_entered(body: Node2D):
 	# Ignore the player who shot the bullet
@@ -55,8 +49,5 @@ func _on_body_entered(body: Node2D):
 			body.queue_free()  # Fallback if enemy doesn't have take_damage method
 		queue_free()  # Destroy bullet after hitting enemy
 
-
-		
-		
 func _on_timer_timeout():
 	queue_free()

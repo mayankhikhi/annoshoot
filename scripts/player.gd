@@ -1,12 +1,18 @@
 extends CharacterBody2D
 
-const SPEED = 150.0
+class_name player
+
+signal health_changed
+signal ammo
+
+
+const NORMALSPEED = 150.0
+const DASHSPEED = 450.0
 const ACCELERATION = 1000.0
 const FRICTION = 800.0
 
-# Zone self-damage
-const ZONE_SELF_DAMAGE = 5.0
-var zone_damage_timer := 0.0
+var IS_DASHING = false
+var CAN_DASH = true
 
 # ### ADDED: Knockback settings
 const KNOCKBACK_FORCE = 100.0
@@ -120,9 +126,8 @@ func _ready():
 			zone_animation.visible = false
 		zone_area.body_entered.connect(_on_zone_body_entered)
 		zone_area.body_exited.connect(_on_zone_body_exited)
-	
-	
-	
+
+
 	setup_audio()
 	setup_lift() # Setup lift logic
 	# Global.zombies_remaining = 0 # REMOVED: Managed by Spawner now
@@ -170,6 +175,7 @@ func _on_buy_mag_pressed():
 	if Global.coins >= 5:
 		Global.coins -= 5
 		magazines += 1
+		emit_signal("ammo")
 		Global.magazines = magazines # Sync
 		update_ui()
 		# Optional: Play sound
@@ -193,6 +199,7 @@ func _on_buy_health_pressed():
 		if current_health < max_health:
 			Global.coins -= 20
 			var heal_amount = max_health * 0.5
+			emit_signal("health_changed")
 			current_health = min(current_health + heal_amount, max_health)
 			Global.current_health = current_health # Sync
 			if health_bar: health_bar.value = current_health
@@ -378,15 +385,7 @@ func _physics_process(delta: float) -> void:
 				
 		elif not player_in_zone:
 			if kill_all_label: kill_all_label.visible = false
-	# Zone self-damage over time
-	if zone_active:
-		zone_damage_timer += delta
-		if zone_damage_timer >= 1.0:
-			take_damage(ZONE_SELF_DAMAGE)
-			zone_damage_timer = 0.0
-		else:
-			zone_damage_timer = 0.0
-	
+
 	handle_weapon_toggle()
 	handle_zone_toggle()
 	handle_shooting()
@@ -396,8 +395,12 @@ func _physics_process(delta: float) -> void:
 	handle_torch_toggle()
 	update_torch_transform(delta)
 	update_torch_flicker(delta)
-	
-	
+
+	if zone_active:
+		zone_timer += delta
+		if zone_timer >= zone_duration:
+			force_deactivate_zone()
+
 	update_ui()
 	update_camera(delta)
 
@@ -451,7 +454,6 @@ func update_torch_flicker(delta):
 func force_deactivate_zone():
 	zone_active = false
 	zone_timer = 0.0
-	zone_damage_timer = 0.0
 	if zone_area:
 		zone_area.monitoring = false
 		zone_area.monitorable = false
@@ -496,8 +498,17 @@ func update_camera(delta):
 	
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
+	if Input.is_action_just_pressed("dash") and CAN_DASH:
+		IS_DASHING = true
+		CAN_DASH = false 
+		$Dash_Timer.start()
+		$Dash_cooldown.start()
+	
 	if input_direction != Vector2.ZERO:
-		velocity = velocity.move_toward(input_direction * SPEED, ACCELERATION * delta)
+		if IS_DASHING:
+			velocity = velocity.move_toward(input_direction * DASHSPEED, ACCELERATION * delta)
+		else:
+			velocity = velocity.move_toward(input_direction * NORMALSPEED, ACCELERATION * delta)
 		if not is_aiming:
 			play_movement_animation(input_direction)
 	else:
@@ -531,6 +542,7 @@ func reload():
 	magazines -= 1
 	Global.current_ammo = current_ammo # Sync
 	Global.magazines = magazines # Sync
+	emit_signal("ammo")
 	update_ui()
 	is_reloading = false
 
@@ -572,11 +584,10 @@ func handle_zone_toggle():
 				await get_tree().physics_frame
 				_check_zone_bodies()
 			else:
-				zone_area.monitoring = false
-				zone_area.monitorable = false
-				zone_damage_timer = 0.0
+				zone_area.monitoring = zone_active
+				zone_area.monitorable = zone_active
 				if zone_animation:
-					zone_animation.visible = false
+					zone_animation.visible = zone_active
 
 func handle_shooting():
 	if Input.is_action_just_pressed("shoot") and weapon_equipped:
@@ -595,6 +606,7 @@ func handle_shooting():
 				shoot()
 				current_ammo -= 1
 				Global.current_ammo = current_ammo # Sync
+				emit_signal("ammo")
 		else:
 			reload()
 
@@ -742,6 +754,7 @@ func take_damage(damage: float):
 	
 	current_health -= damage
 	Global.current_health = current_health # Sync
+	emit_signal("health_changed")
 	print("Player Health: ", current_health, "/", max_health)
 	
 	if health_bar:
@@ -764,3 +777,11 @@ func take_damage(damage: float):
 func die():
 	print("Player: Died!")
 	get_tree().change_scene_to_file("res://scenes/end_secene.tscn")
+
+
+func _on_dash_timer_timeout() -> void:
+	IS_DASHING = false 
+
+
+func _on_dash_cooldown_timeout() -> void:
+	CAN_DASH = true

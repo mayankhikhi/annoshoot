@@ -1867,3 +1867,11 @@ shadow_filter = 1
 texture = ExtResource("8_smehm")
 offset = Vector2(0, -470)
 texture_scale = 3.0
+
+[node name="Dash_Timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="Dash_cooldown" type="Timer" parent="."]
+
+[connection signal="timeout" from="Dash_Timer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="Dash_cooldown" to="." method="_on_dash_cooldown_timeout"]

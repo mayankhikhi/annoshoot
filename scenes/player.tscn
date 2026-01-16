@@ -1,4 +1,4 @@
-[gd_scene load_steps=238 format=3 uid="uid://b7p6qd15x513w"]
+[gd_scene load_steps=240 format=3 uid="uid://b7p6qd15x513w"]
 
 [ext_resource type="Script" uid="uid://behlplf1ajxyi" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://c7xd5efw8xc3s" path="res://assets/player movement/player_movement_nogun.png" id="2_g2els"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://lgrgbs58v5wj" path="res://assets/player movement/idle animation withgun.png" id="4_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://dxpwx28xip7hb" path="res://assets/summoning circle animation sprite sheet.png" id="6_tuyoq"]
 [ext_resource type="PackedScene" uid="uid://crosshair" path="res://scenes/crosshair.tscn" id="7_fjrip"]
+[ext_resource type="Texture2D" uid="uid://dfc56kal8jlnm" path="res://assets/player movement/torch-light.png" id="8_smehm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_um52d"]
 atlas = ExtResource("3_dqkch")
@@ -1808,18 +1809,20 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="GDScript" id="GDScript_fjrip"]
+script/source = "extends Camera2D
+"
+
 [node name="CharacterBody2D2" type="CharacterBody2D"]
 script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(6.5, 5.5)
 scale = Vector2(1.6875, 1.5357141)
 sprite_frames = SubResource("SpriteFrames_7pfmu")
 animation = &"aim_left_down"
 autoplay = "idle_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(5, 4.55)
 shape = SubResource("CapsuleShape2D_fjrip")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -1828,11 +1831,11 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(4, -19)
+position = Vector2(-3, -18)
 shape = SubResource("CircleShape2D_qlg0r")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
-position = Vector2(10.500002, -17.499996)
+position = Vector2(-3, -18.000002)
 scale = Vector2(1.0809523, 1.0904762)
 sprite_frames = SubResource("SpriteFrames_xbcgd")
 
@@ -1850,3 +1853,17 @@ show_percentage = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
+script = SubResource("GDScript_fjrip")
+
+[node name="Torch" type="PointLight2D" parent="."]
+position = Vector2(0, -8)
+rotation = -0.038469348
+scale = Vector2(0.60594976, 0.30135396)
+enabled = false
+color = Color(0.39455545, 0.41332084, 0.2558756, 1)
+energy = 2.0
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("8_smehm")
+offset = Vector2(0, -470)
+texture_scale = 3.0

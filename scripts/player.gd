@@ -4,6 +4,10 @@ const SPEED = 150.0
 const ACCELERATION = 1000.0
 const FRICTION = 800.0
 
+# Zone self-damage
+const ZONE_SELF_DAMAGE = 5.0
+var zone_damage_timer := 0.0
+
 # ### ADDED: Knockback settings
 const KNOCKBACK_FORCE = 100.0
 const KNOCKBACK_DECAY = 1000.0 # How fast the knockback stops
@@ -14,6 +18,25 @@ const ZONE_RADIUS = 300.0 # Radius for demon circle detection
 @onready var zone_area = $Area2D
 @onready var zone_animation = $Area2D/AnimatedSprite2D
 @onready var health_bar = $ProgressBar
+@onready var torch: PointLight2D = $Torch
+
+var torch_on := false
+
+# Orbit / sway
+# Torch settings
+var torch_radius := 1.0       # distance from player center
+var torch_angle := 0.0         # current angle of torch relative to player
+var cone_rotation_speed := 6.0 # how fast the cone revolves
+var torch_apex_offset := Vector2(0, -torch_radius) # initial apex offset (upwards)
+
+var sway_time := 0.0
+var sway_strength := 1.5   
+var sway_speed := 6.0
+
+# Flicker
+var base_energy := 1.5
+var flicker_timer := 0.0
+
 
 var coin_label: Label
 var ammo_label: Label
@@ -97,6 +120,8 @@ func _ready():
 			zone_animation.visible = false
 		zone_area.body_entered.connect(_on_zone_body_entered)
 		zone_area.body_exited.connect(_on_zone_body_exited)
+	
+	
 	
 	setup_audio()
 	setup_lift() # Setup lift logic
@@ -353,21 +378,92 @@ func _physics_process(delta: float) -> void:
 				
 		elif not player_in_zone:
 			if kill_all_label: kill_all_label.visible = false
-
+	# Zone self-damage over time
+	if zone_active:
+		zone_damage_timer += delta
+		if zone_damage_timer >= 1.0:
+			take_damage(ZONE_SELF_DAMAGE)
+			zone_damage_timer = 0.0
+		else:
+			zone_damage_timer = 0.0
+	
 	handle_weapon_toggle()
 	handle_zone_toggle()
 	handle_shooting()
 	handle_reloading()
 	handle_debug_input() # Debug Cheat
 	# handle_lift_interaction() # Removed explicit F press check
+	handle_torch_toggle()
+	update_torch_transform(delta)
+	update_torch_flicker(delta)
 	
-	if zone_active:
-		zone_timer += delta
-		if zone_timer >= zone_duration:
-			force_deactivate_zone()
 	
 	update_ui()
 	update_camera(delta)
+
+
+func handle_torch_toggle():
+	if Input.is_action_just_pressed("torch_toggle"):
+		torch_on = !torch_on
+		torch.enabled = torch_on
+
+
+func update_torch_transform(delta):
+	if not torch_on:
+		return
+
+	# Vector from player to mouse
+	var mouse_dir = get_global_mouse_position() - global_position
+	var mouse_angle = mouse_dir.angle() + (PI / 2)
+
+	# Current torch vector from player
+	var torch_dir = torch.position
+	var current_angle = torch_dir.angle()
+
+	# Angle difference
+	var angle_diff = wrapf(mouse_angle - current_angle, -PI, PI)
+
+	# If mouse moves along same line from apex, don't rotate
+	if abs(angle_diff) < 0.01:
+		torch.position = mouse_dir.normalized() * torch_radius
+		torch.rotation = mouse_angle
+		torch_angle = mouse_angle
+	else:
+		# Smoothly revolve around player toward mouse
+		torch_angle += clamp(angle_diff, -cone_rotation_speed * delta, cone_rotation_speed * delta)
+		torch.position = Vector2(cos(torch_angle), sin(torch_angle)) * torch_radius
+		torch.rotation = torch_angle
+
+
+
+	
+func update_torch_flicker(delta):
+	if not torch_on:
+		return
+
+	flicker_timer -= delta
+	if flicker_timer <= 0.0:
+		flicker_timer = randf_range(0.06, 0.15)
+		torch.energy = base_energy * randf_range(0.8, 1.2)
+
+		
+		
+func force_deactivate_zone():
+	zone_active = false
+	zone_timer = 0.0
+	zone_damage_timer = 0.0
+	if zone_area:
+		zone_area.monitoring = false
+		zone_area.monitorable = false
+		if zone_animation:
+			zone_animation.visible = false
+	print("Player: Zone forcibly DEACTIVATED due to timeout!")
+	
+	
+	
+	
+
+	
 
 func update_camera(delta):
 	if not camera: return
@@ -452,15 +548,6 @@ func handle_lift_interaction():
 				await get_tree().create_timer(2.0).timeout
 				if kill_all_label: kill_all_label.visible = false
 
-func force_deactivate_zone():
-	zone_active = false
-	zone_timer = 0.0
-	if zone_area:
-		zone_area.monitoring = false
-		zone_area.monitorable = false
-		if zone_animation:
-			zone_animation.visible = false
-	print("Player: Zone forcibly DEACTIVATED due to timeout!")
 
 func handle_weapon_toggle():
 	if Input.is_action_just_pressed("weapon_toggle"):
@@ -485,10 +572,11 @@ func handle_zone_toggle():
 				await get_tree().physics_frame
 				_check_zone_bodies()
 			else:
-				zone_area.monitoring = zone_active
-				zone_area.monitorable = zone_active
+				zone_area.monitoring = false
+				zone_area.monitorable = false
+				zone_damage_timer = 0.0
 				if zone_animation:
-					zone_animation.visible = zone_active
+					zone_animation.visible = false
 
 func handle_shooting():
 	if Input.is_action_just_pressed("shoot") and weapon_equipped:
@@ -568,6 +656,8 @@ func _check_zone_bodies():
 			body.transform_to_zombie(self)
 			if body not in transformed_enemies:
 				transformed_enemies.append(body)
+
+
 
 func _on_zone_body_entered(body):
 	if body == self: return

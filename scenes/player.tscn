@@ -1866,6 +1866,11 @@ show_percentage = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
+limit_left = -538
+limit_top = -135
+limit_right = 365
+limit_bottom = 768
+limit_smoothed = true
 script = SubResource("GDScript_fjrip")
 
 [node name="Torch" type="PointLight2D" parent="."]

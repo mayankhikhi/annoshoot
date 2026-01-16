@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1768543732
+::res://::1768554482
 default_bus_layout.tres::AudioBusLayout::-1::1768323336::0::1::::<><><>0<>0<><>::
 learning.txt::TextFile::-1::1768323336::0::1::::<><><>0<>0<><>::
 README.md::TextFile::-1::1768323336::0::1::::<><><>0<>0<><>::
@@ -58,7 +58,7 @@ Kenney Rocket.ttf::FontFile::8069287383071847881::1768323336::1768323372::1::::<
 npc 1 idle.png::CompressedTexture2D::322441515041012796::1768323336::1768323372::1::::<><><>0<>0<>9dc7c40ee6bdc6a7a182dbc087337da2<>res://.godot/imported/npc 1 idle.png-e4bf3872d34e78cf54a17bd921193970.ctex::
 npc 1 walking.png::CompressedTexture2D::1624453589652144252::1768323336::1768323372::1::::<><><>0<>0<>de641e4965dcf7eeb7f4cb851c36593e<>res://.godot/imported/npc 1 walking.png-f177fcf946b2cf360921c053d10f1cb5.ctex::
 zombie tranformation and running.png::CompressedTexture2D::909648400769440992::1768323336::1768323372::1::::<><><>0<>0<>f88a3f302c5466bb6863e4b4fa7122b2<>res://.godot/imported/zombie tranformation and running.png-82b4ca7f8f1d27bb9c3a3e497e0d2360.ctex::
-::res://assets/player movement/::1768545743
+::res://assets/player movement/::1768552923
 aim cursor.png::CompressedTexture2D::7636778091405957920::1768323336::1768323372::1::::<><><>0<>0<>130ab77f8582bc865cddde0a1066dacc<>res://.godot/imported/aim cursor.png-b452eb418c27bafb60d66dfe09959d80.ctex::
 bullet(if needed).png::CompressedTexture2D::4480309684251729839::1768323336::1768323372::1::::<><><>0<>0<>7b3ea793f300cb3f12c83e4539f65553<>res://.godot/imported/bullet(if needed).png-d4acdf4b82cc0e8dd656e5ded56f0648.ctex::
 idle animation aimming.png::CompressedTexture2D::8952040638938233234::1768323336::1768323372::1::::<><><>0<>0<>2d2622072ce1f86d2ed8bae11ce7e714<>res://.godot/imported/idle animation aimming.png-dc252e3d0932795d33e9282d938ac1d3.ctex::
@@ -68,7 +68,8 @@ images.jpg::CompressedTexture2D::7537485547683833642::1768494345::1768494395::1:
 player_movement_nogun.png::CompressedTexture2D::7066600995804067866::1768323336::1768323372::1::::<><><>0<>0<>ecddab7c32030c16a7de50062a25cb20<>res://.godot/imported/player_movement_nogun.png-bae6e242553f437a4cd26618bc99c71c.ctex::
 player_movement_withgun.png::CompressedTexture2D::6391265508771326754::1768323336::1768323372::1::::<><><>0<>0<>b69f16099d6cf4ffc154202b2971bdee<>res://.godot/imported/player_movement_withgun.png-6434a5339b9a0fc646528cf47e112855.ctex::
 torch-light.png::CompressedTexture2D::7516212419949387434::1768544648::1768546382::1::::<><><>0<>0<>18868e8c38c18f712ff1ec3518e73765<>res://.godot/imported/torch-light.png-61fff4afb8eccb1af0ac4d41503d41f0.ctex::
-::res://assets/ui/::1768323372
+::res://assets/ui/::1768554251
+00-final-product.asperite.png::CompressedTexture2D::1242542908588825278::1768554251::1768554483::1::::<><><>0<>0<>07bc949e5b167fe8e21c52e764828a26<>res://.godot/imported/00-final-product.asperite.png-71a5da0d981c79b3541e576d241ca117.ctex::
 00-final-product.png::CompressedTexture2D::1709851150840350704::1768323336::1768323372::1::::<><><>0<>0<>59cce32680030d3da884d19352e0eeef<>res://.godot/imported/00-final-product.png-f338171b0c1464854dabe01cf7e9c189.ctex::
 game over-export.png::CompressedTexture2D::6122578725620912475::1768323336::1768323372::1::::<><><>0<>0<>75ddc81197111a5fafc2b63f31df6d8e<>res://.godot/imported/game over-export.png-82faa2b4b5eb1b4d376f2159d73c3e56.ctex::
 play,quit,option.png::CompressedTexture2D::7941354735053672143::1768323336::1768323372::1::::<><><>0<>0<>b98c0fde436ca407107fb048169cd971<>res://.godot/imported/play,quit,option.png-d288ca3c7c7ca3289402f3f0c19ecdc2.ctex::
@@ -91,7 +92,7 @@ tile002.png::CompressedTexture2D::4348734723391928763::1768323336::1768323372::1
 tile003.png::CompressedTexture2D::7515534400961456352::1768323336::1768323372::1::::<><><>0<>0<>3817a8edca39b12e6cd9504ecedcec62<>res://.godot/imported/tile003.png-6a00fa4dd0b5feb3983a4e26cc50f4ac.ctex::
 tile004.png::CompressedTexture2D::274092904512841170::1768323336::1768323372::1::::<><><>0<>0<>07ecc7ef1ed5558c05de82fb92dae3c2<>res://.godot/imported/tile004.png-07980cc5db805c8aa4122781e18bca02.ctex::
 tile005.png::CompressedTexture2D::6907515098448910616::1768323336::1768323372::1::::<><><>0<>0<>e4cc00d48ce923f92552c5ebb9d5fed2<>res://.godot/imported/tile005.png-78c49fb884d46650153667abe975be96.ctex::
-::res://scenes/::1768545188
+::res://scenes/::1768553304
 blood_particles.tscn::PackedScene::-1::1768323336::0::1::::<><><>0<>0<><>::
 bullet.tscn::PackedScene::194825590927420187::1768323336::0::1::::<><><>0<>0<><>::uid://ckhv8mc0elgtf::::res://scripts/bullet.gd<>uid://b43kbtc1engqp::::res://assets/player movement/bullet(if needed).png
 crosshair.tscn::PackedScene::4486954191161::1768323336::0::1::::<><><>0<>0<><>::res://scripts/crosshair.gd<>res://assets/player movement/aim cursor.png
@@ -107,23 +108,23 @@ main_menu.tscn::PackedScene::181918932736953633::1768323336::0::1::::<><><>0<>0<
 muzzle_particles.tscn::PackedScene::-1::1768323336::0::1::::<><><>0<>0<><>::
 options.tscn::PackedScene::4353769677483713353::1768323336::0::1::::<><><>0<>0<><>::uid://vwt3fsnkta3e::::res://scripts/options.gd<>uid://c1nc6kv0lndbt::::res://assets/fonts/Kenney High.ttf<>uid://bs83n1pxixyi7::::res://assets/fonts/Kenney Pixel Square.ttf
 pause_menu.tscn::PackedScene::6383096947805232194::1768323336::0::1::::<><><>0<>0<><>::uid://7k1u4hl4fk3c::::res://scripts/pause_menu.gd<>uid://dr66hxrghfog::::res://assets/fonts/Kenney Blocks.ttf<>uid://cfswnxvtjohbp::::res://assets/fonts/Kenney Pixel.ttf<>uid://cb0f4nwr72r0l::::res://assets/ui/UI_Flat_IconPlay01a.png<>uid://b763pb6pgcjn0::::res://sounds/switch30.ogg
-player.tscn::PackedScene::4665340345029246550::1768545188::0::1::::<><><>0<>0<><>::uid://behlplf1ajxyi::::res://scripts/player.gd<>uid://c7xd5efw8xc3s::::res://assets/player movement/player_movement_nogun.png<>uid://cxb8hd1t4r25c::::res://assets/player movement/player_movement_withgun.png<>uid://qridvohajd6p::::res://assets/player movement/idle animation nogun.png<>uid://lgrgbs58v5wj::::res://assets/player movement/idle animation withgun.png<>uid://dxpwx28xip7hb::::res://assets/summoning circle animation sprite sheet.png<>uid://crosshair::::res://scenes/crosshair.tscn<>uid://dfnhjyklgvbjm::::res://assets/player movement/images.jpg
-player_stats.tscn::PackedScene::956489402310061920::1768323336::0::1::::<><><>0<>0<><>::uid://clgovp8weais0::::res://assets/ui/health bar/UI_Flat_Handle06a.png<>uid://fwn7b6dx5niw::::res://assets/ui/health bar/UI_Flat_Bar11a.png<>uid://8seb2ki1lwmc::::res://assets/ui/health bar/UI_Flat_BarFill01d.png<>uid://b1luwhvy4vquk::::res://scripts/health.gd
+player.tscn::PackedScene::4665340345029246550::1768553304::0::1::::<><><>0<>0<><>::uid://behlplf1ajxyi::::res://scripts/player.gd<>uid://c7xd5efw8xc3s::::res://assets/player movement/player_movement_nogun.png<>uid://cxb8hd1t4r25c::::res://assets/player movement/player_movement_withgun.png<>uid://qridvohajd6p::::res://assets/player movement/idle animation nogun.png<>uid://lgrgbs58v5wj::::res://assets/player movement/idle animation withgun.png<>uid://dxpwx28xip7hb::::res://assets/summoning circle animation sprite sheet.png<>uid://crosshair::::res://scenes/crosshair.tscn<>uid://dfc56kal8jlnm::::res://assets/player movement/torch-light.png<>uid://cr405af4mvtso::::res://scripts/Player_stats.gd<>uid://clgovp8weais0::::res://assets/ui/health bar/UI_Flat_Handle06a.png
 ui_hud.tscn::PackedScene::8725201923496244474::1768323336::0::1::::<><><>0<>0<><>::uid://cw7aw6kyscnr3::::res://scenes/pause_menu.tscn
 win_scene.tscn::PackedScene::-1::1768323336::0::1::::<><><>0<>0<><>::
-::res://scripts/::1768545188
+::res://scripts/::1768550231
 area_2d.gd::GDScript::2268604140299102250::1768409878::0::1::::<>Area2D<><>0<>0<><>::
-bullet.gd::GDScript::5490515070603383131::1768494748::0::1::::<>Area2D<><>0<>0<><>::
+bullet.gd::GDScript::5490515070603383131::1768549197::0::1::::<>Area2D<><>0<>0<><>::
 crosshair.gd::GDScript::4635212776630912223::1768323336::0::1::::<>Sprite2D<><>0<>0<><>::
-emeny.gd::GDScript::3066834646531043653::1768406217::0::1::::<>CharacterBody2D<><>0<>0<><>::
+emeny.gd::GDScript::3066834646531043653::1768549197::0::1::::<>CharacterBody2D<><>0<>0<><>::
 end_scene.gd::GDScript::5046755495214050360::1768323336::0::1::::<>Control<><>0<>0<><>::
 Global.gd::GDScript::9093617747847528509::1768323336::0::1::::<>Node<><>0<>0<><>::
-human.gd::GDScript::3886055173196229813::1768406217::0::1::::<>CharacterBody2D<><>0<>0<><>::
+human.gd::GDScript::3886055173196229813::1768549197::0::1::::<>CharacterBody2D<><>0<>0<><>::
 level_2.gd::GDScript::8772681051192502531::1768323336::0::1::::<>Node2D<><>0<>0<><>::
 main_menu.gd::GDScript::7900587210203469734::1768323336::0::1::::<>Node2D<><>0<>0<><>::
 options.gd::GDScript::1520585943107896852::1768323336::0::1::::<>Control<><>0<>0<><>::
 pause_menu.gd::GDScript::2268302666177197562::1768323336::0::1::::<>Control<><>0<>0<><>::
-player.gd::GDScript::2682321963015229404::1768545188::0::1::::<>CharacterBody2D<><>0<>0<><>::
+player.gd::GDScript::2682321963015229404::1768549197::0::1::::player<>CharacterBody2D<><>0<>0<><>::
+Player_stats.gd::GDScript::6027490171795328006::1768550231::0::1::::<>TextureProgressBar<><>0<>0<><>::
 spawner.gd::GDScript::1277933982581764397::1768323336::0::1::::<>Node<><>0<>0<><>::
 win_trigger.gd::GDScript::6364755017209926117::1768323336::0::1::::<>Area2D<><>0<>0<><>::
 ::res://sounds/::1768323372

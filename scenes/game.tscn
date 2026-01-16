@@ -1034,7 +1034,7 @@ texture = ExtResource("24_sww3w")
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("3_lnu2h")]
 z_index = 2
-position = Vector2(-560.70654, 193.62346)
+position = Vector2(-607.8391, -8.343171)
 rotation = 1.4269423
 
 [node name="LiftEntry" parent="." instance=ExtResource("6_p57ef")]

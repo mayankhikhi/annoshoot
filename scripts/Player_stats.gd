@@ -15,4 +15,4 @@ func _ready() -> void:
 func update():
 	$".".value = player.current_health * 100 / player.max_health
 	$"../../Panel2/Ammo".value = player.current_ammo * 3
-	$"../../Panel2/Label".text = "x" + str(player.magazines)
+	$"../../Panel2/Label".text = "  x " + str(player.magazines)

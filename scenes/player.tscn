@@ -1871,6 +1871,7 @@ limit_top = -135
 limit_right = 365
 limit_bottom = 768
 limit_smoothed = true
+editor_draw_limits = true
 script = SubResource("GDScript_fjrip")
 
 [node name="Torch" type="PointLight2D" parent="."]

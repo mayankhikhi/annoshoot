@@ -159,7 +159,7 @@ texture = ExtResource("1_qnb83")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i4re6"]
 texture = ExtResource("2_sww3w")
-margins = Vector2i(0, 6)
+margins = Vector2i(5, 5)
 3:0/0 = 0
 4:0/0 = 0
 5:0/0 = 0
@@ -328,7 +328,9 @@ margins = Vector2i(0, 6)
 31:6/0 = 0
 32:6/0 = 0
 33:6/0 = 0
+3:7/next_alternative_id = 2
 3:7/0 = 0
+3:7/1 = 1
 4:7/0 = 0
 5:7/0 = 0
 6:7/0 = 0
@@ -632,7 +634,9 @@ margins = Vector2i(0, 6)
 1:16/0 = 0
 2:16/0 = 0
 3:16/0 = 0
+4:16/next_alternative_id = 2
 4:16/0 = 0
+4:16/1 = 1
 5:16/0 = 0
 6:16/0 = 0
 7:16/0 = 0
@@ -1034,7 +1038,7 @@ texture = ExtResource("24_sww3w")
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("3_lnu2h")]
 z_index = 2
-position = Vector2(-607.8391, -8.343171)
+position = Vector2(-626.7174, -6.1954145)
 rotation = 1.4269423
 
 [node name="LiftEntry" parent="." instance=ExtResource("6_p57ef")]

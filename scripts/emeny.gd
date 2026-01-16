@@ -196,7 +196,7 @@ func take_damage(damage: float):
 
 func die():
 	print("Enemy: Died!")
-	Global.coins += 7
+	Global.coins += 10
 	Global.zombies_remaining -= 1
 	print("Global: Coins: ", Global.coins, " Zombies Left: ", Global.zombies_remaining)
 	call_deferred("queue_free")

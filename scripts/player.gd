@@ -344,10 +344,6 @@ func show_win_screen():
 	Global.game_over_message = "YOU WIN!\nALL ZOMBIES ELIMINATED"
 	transition_to_scene("res://scenes/end_secene.tscn")
 
-func handle_debug_input():
-	if Input.is_key_pressed(KEY_G):
-		print("DEBUG: Kill All Zombies triggered!")
-		get_tree().call_group("enemy", "die")
 
 
 func setup_audio():
@@ -470,7 +466,6 @@ func _physics_process(delta: float) -> void:
 	handle_zone_toggle()
 	handle_shooting()
 	handle_reloading()
-	handle_debug_input() # Debug Cheat
 	# handle_lift_interaction() # Removed explicit F press check
 	handle_torch_toggle()
 	update_torch_transform(delta)

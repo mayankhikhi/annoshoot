@@ -1955,15 +1955,6 @@ sprite_frames = SubResource("SpriteFrames_xbcgd")
 [node name="Crosshair" parent="." instance=ExtResource("7_fjrip")]
 position = Vector2(-30, -25)
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = 20.0
-offset_top = -32.0
-offset_right = 24.0
-offset_bottom = -5.0
-rotation = 1.5707964
-fill_mode = 2
-show_percentage = false
-
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
 limit_smoothed = true

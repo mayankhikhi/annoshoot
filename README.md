@@ -12,7 +12,7 @@ In **ANNOSHOOT**, standard combat tactics won't always save you. Enemies don’t
 
 ## 🚀 Key Features
 
-- **Dynamic Enemy AI**  
+- **Intelligent Enemy NPCs**  
   Anomalies feature unpredictable behaviors, forcing players to stay alert and mobile.
 
 - **Atmospheric Visuals**  
@@ -21,8 +21,6 @@ In **ANNOSHOOT**, standard combat tactics won't always save you. Enemies don’t
 - **Responsive Combat**  
   Smooth movement and shooting mechanics optimized for **keyboard and mouse** gameplay.
 
-- **Wave Survival Gameplay**  
-  Increasing difficulty as waves progress, testing reflexes and adaptability.
 
 ---
 
@@ -30,13 +28,13 @@ In **ANNOSHOOT**, standard combat tactics won't always save you. Enemies don’t
 
 - **Engine:** Godot Engine 4.x  
 - **Language:** GDScript  
-- **Art Style:** 2D Pixel Art  
-- **Development Environment:** Arch Linux (Hyprland)
+- **Art Style:** 2D Pixel Art 
 
 ---
 
 ## 🔧 How to Run the Game
 
-### 1. Clone the Repository
-```bash
-git clone https://github.com/mayankhikhi/ANNOSHOOT.git
+### Download and extract this zip file from itch.io and run "annoshoot.exe" file.
+ENJOY!!
+
+

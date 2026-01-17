@@ -89,10 +89,6 @@ var demon_circle_uses = 3
 var max_demon_circle_uses = 5 # Increased max to 5
 var game_started_safe = false
 
-# Demon Blood Damage
-const DEMON_BLOOD_DAMAGE_PER_SECOND = 5.0 # Damage taken per second while zone is active
-var zone_damage_timer = 0.0 # Accumulates damage over time
-
 # Audio
 var shoot_sound_player: AudioStreamPlayer
 var reload_sound_player: AudioStreamPlayer
@@ -185,10 +181,6 @@ func setup_shop_ui():
 	# Connect Button Signal
 	if not shop_button.pressed.is_connected(_on_shop_button_pressed):
 		shop_button.pressed.connect(_on_shop_button_pressed)
-	
-	# Fix Shop Button Position (Below text stats)
-	if shop_button:
-		shop_button.position = Vector2(20, 150)
 	
 	# Find Panel Buttons
 	mag_button = shop_panel.get_node_or_null("BuyMagButton")
@@ -485,11 +477,6 @@ func _physics_process(delta: float) -> void:
 	
 	if zone_active:
 		zone_timer += delta
-		zone_damage_timer += delta
-		# Apply damage while zone is active
-		if zone_damage_timer >= 1.0:
-			take_damage(DEMON_BLOOD_DAMAGE_PER_SECOND)
-			zone_damage_timer = 0.0
 		if zone_timer >= zone_duration:
 			force_deactivate_zone()
 	
@@ -666,7 +653,6 @@ func handle_lift_interaction():
 func force_deactivate_zone():
 	zone_active = false
 	zone_timer = 0.0
-	zone_damage_timer = 0.0
 	if zone_area:
 		zone_area.monitoring = false
 		zone_area.monitorable = false

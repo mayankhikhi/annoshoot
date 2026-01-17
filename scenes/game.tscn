@@ -886,7 +886,6 @@ texture_region_size = Vector2i(20, 20)
 0:0/0 = 0
 3:0/size_in_atlas = Vector2i(3, 2)
 3:0/0 = 0
-6:0/size_in_atlas = Vector2i(2, 2)
 6:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0rmfi"]
@@ -1174,7 +1173,7 @@ offset_right = -191.07977
 offset_bottom = -165.30283
 rotation = 1.4573499
 theme_override_fonts/font = ExtResource("31_qouja")
-text = "Use 'F' to draw a blood circle.
+text = "Use 'E' to draw a blood circle.
 Dont use it for too long..."
 horizontal_alignment = 1
 autowrap_mode = 2

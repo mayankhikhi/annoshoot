@@ -485,6 +485,11 @@ func _physics_process(delta: float) -> void:
 	
 	if zone_active:
 		zone_timer += delta
+		zone_damage_timer += delta
+		# Apply damage while zone is active
+		if zone_damage_timer >= 1.0:
+			take_damage(DEMON_BLOOD_DAMAGE_PER_SECOND)
+			zone_damage_timer = 0.0
 		if zone_timer >= zone_duration:
 			force_deactivate_zone()
 	
@@ -661,6 +666,7 @@ func handle_lift_interaction():
 func force_deactivate_zone():
 	zone_active = false
 	zone_timer = 0.0
+	zone_damage_timer = 0.0
 	if zone_area:
 		zone_area.monitoring = false
 		zone_area.monitorable = false

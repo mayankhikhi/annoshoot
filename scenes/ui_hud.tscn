@@ -1,14 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://dwks2h4btukba"]
+[gd_scene load_steps=3 format=3 uid="uid://dwks2h4btukba"]
 
 [ext_resource type="PackedScene" uid="uid://cw7aw6kyscnr3" path="res://scenes/pause_menu.tscn" id="1_iy54j"]
+[ext_resource type="FontFile" uid="uid://si2i3fuc5tiw" path="res://assets/fonts/Kenney Mini.ttf" id="1_v826e"]
 
 [node name="UI" type="CanvasLayer"]
 
 [node name="ShopButton" type="Button" parent="."]
-offset_left = 20.0
-offset_top = 110.0
-offset_right = 100.0
-offset_bottom = 150.0
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -192.0
+offset_right = -112.0
+offset_bottom = -152.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_v826e")
+theme_override_font_sizes/font_size = 24
 text = "SHOP"
 
 [node name="ShopPanel" type="ColorRect" parent="."]

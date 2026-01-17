@@ -27,6 +27,7 @@ size = Vector2(80, 20)
 script = ExtResource("1_script")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+z_index = -2
 offset_left = -820.0
 offset_top = -587.0
 offset_right = 816.0
@@ -87,6 +88,7 @@ polygon = PackedVector2Array(100, -164, 153, -131, 159, -131, 166, -132, 169, -1
 polygon = PackedVector2Array(99, -222, 226, -174, 532, -175, 532, -242, 95, -243)
 
 [node name="Floor2Preview" type="Sprite2D" parent="TileMap"]
+z_index = -1
 scale = Vector2(2, 2)
 texture = ExtResource("1_3bmlt")
 

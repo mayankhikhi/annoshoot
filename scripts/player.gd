@@ -89,6 +89,10 @@ var demon_circle_uses = 3
 var max_demon_circle_uses = 5 # Increased max to 5
 var game_started_safe = false
 
+# Demon Blood Damage
+const DEMON_BLOOD_DAMAGE_PER_SECOND = 5.0 # Damage taken per second while zone is active
+var zone_damage_timer = 0.0 # Accumulates damage over time
+
 # Audio
 var shoot_sound_player: AudioStreamPlayer
 var reload_sound_player: AudioStreamPlayer
